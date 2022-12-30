@@ -8,7 +8,9 @@ export default function Header(props) {
         <img className="logo-pic" src="/images/soccer-goal.png"/>
       </div>
       <div className="col-25 row jc-end margin-right">
-        <i className="fa-solid fa-bars"/>
+        <button className="menu-button">
+          <i className="fa-solid fa-bars"/>
+        </button>
       </div>
     </div>
   );
