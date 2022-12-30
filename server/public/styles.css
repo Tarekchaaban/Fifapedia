@@ -23,12 +23,20 @@
   align-items: center;
 }
 
+.jc-center {
+  justify-content: center;
+}
+
 .col-75 {
   flex-basis: 75%;
 }
 
 .col-25 {
   flex-basis: 25%;
+}
+
+.col-100 {
+  flex-basis: 100%;
 }
 
 .jc-end {
@@ -46,5 +54,40 @@
 
 .gray-background {
   background-color: #f7f7f7;
-  height: 700px;
+  height: 100vh;
+}
+
+.height-70 {
+  height: 70vh;
+}
+
+.width {
+  width: 100vh;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.team-search-bar {
+  width: 80%;
+  padding: 12px;
+  border-radius: 5px;
+  border-color: #015291;
+}
+
+.relative {
+  position: relative;
+}
+
+::placeholder {
+  color: #015291;
+  font-family: Roboto, sans-serif;
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  top: 242px;
+  right: 160px;
+  color: #015291;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../components/header';
-import Background from '../components/background';
+import TeamSearch from '../components/team-search';
 
 export default function Home(props) {
   return (
     <div>
       <Header />
-      <Background />
+      <TeamSearch />
     </div>
   );
 }
