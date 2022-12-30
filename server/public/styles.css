@@ -1,0 +1,51 @@
+.header-logo {
+  font-family: Unkempt, sans-serif;
+  display: inline;
+  color: white;
+  margin-left: 0.5em;
+  font-size: 30px;
+}
+
+.logo-pic {
+  width: 25px;
+  margin-left: 3px;
+}
+
+.blue-header {
+  background-color: #015291;
+  height: 50px;
+}
+
+.row {
+  display: flex;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.col-75 {
+  flex-basis: 75%;
+}
+
+.col-25 {
+  flex-basis: 25%;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+.margin-right {
+  margin-right: 1em;
+}
+
+.fa-bars {
+  color: white;
+  font-size: 2em;
+}
+
+.gray-background {
+  background-color: #f7f7f7;
+  height: 700px;
+}
