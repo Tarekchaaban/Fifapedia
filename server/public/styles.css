@@ -62,7 +62,7 @@
 }
 
 .height-30 {
-  height: 29vh;
+  height: 30vh;
 }
 
 .width {
@@ -114,8 +114,7 @@
 }
 
 .fifa-logo {
-  background-image: url("/images/fifa-logo.jpg");
-  width: 10%;
+  background-color: #015291;
 }
 
 .wrapped {
@@ -128,4 +127,23 @@
 
 i {
   cursor: pointer;
+}
+
+.fifa-logo-pic {
+  padding-bottom: 10px;
+}
+
+.team-image {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.stadium-image {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.team-info {
+  font-weight: bold;
+  color: #015291;
 }
