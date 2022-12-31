@@ -62,7 +62,7 @@ export default class TeamSearch extends React.Component {
           <div className="row jc-center">
             <div className="col-100-40">
               <img className="stadium-image" src={this.state.response.response[0].venue.image} alt="pic of stadium" />
-              <p className="team-info text-align-center">{this.state.response.response[0].venue.name} | {this.state.response.response[0].venue.city} | {this.state.response.response[0].venue.capacity}</p>
+              <p className="team-info text-align-center">{this.state.response.response[0].venue.name} | {this.state.response.response[0].venue.city} | Capacity: {this.state.response.response[0].venue.capacity}</p>
             </div>
           </div>
         </div>
