@@ -1,0 +1,9 @@
+.col-100-40 {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .col-100-40 {
+    flex-basis: 50%;
+  }
+}

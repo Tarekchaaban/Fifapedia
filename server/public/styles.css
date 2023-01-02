@@ -133,13 +133,15 @@ i {
 }
 
 .team-image {
-  width: 100%;
+  width: 72%;
   margin-top: 1em;
+  margin-left: 6em;
 }
 
 .stadium-image {
   width: 100%;
   margin-top: 1em;
+  padding: 0 1em;
 }
 
 .team-info {

@@ -53,13 +53,11 @@ export default class TeamSearch extends React.Component {
     } else {
       return (
         <div className="gray-background">
-          <div className="row jc-center">
+          <div className="row jc-center wrapped">
             <div className="col-100-40">
               <img className="team-image" src={this.state.response.response[0].team.logo} alt="pic of team logo" />
               <p className="team-info text-align-center">{this.state.response.response[0].team.name} ({this.state.response.response[0].team.code}) | {this.state.response.response[0].team.country} | Est.{this.state.response.response[0].team.founded}</p>
             </div>
-          </div>
-          <div className="row jc-center">
             <div className="col-100-40">
               <img className="stadium-image" src={this.state.response.response[0].venue.image} alt="pic of stadium" />
               <p className="team-info text-align-center">{this.state.response.response[0].venue.name} | {this.state.response.response[0].venue.city} | Capacity: {this.state.response.response[0].venue.capacity}</p>
