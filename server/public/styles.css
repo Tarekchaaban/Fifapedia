@@ -1,0 +1,150 @@
+.header-logo {
+  font-family: Unkempt, sans-serif;
+  display: inline;
+  color: white;
+  margin-left: 0.5em;
+}
+
+.logo-pic {
+  width: 25px;
+  margin-left: 3px;
+}
+
+.blue-header {
+  background-color: #015291;
+  height: 50px;
+}
+
+.row {
+  display: flex;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.col-75 {
+  flex-basis: 75%;
+}
+
+.col-25 {
+  flex-basis: 25%;
+}
+
+.col-100 {
+  flex-basis: 100%;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+.margin-right {
+  margin-right: 1em;
+}
+
+.fa-bars {
+  color: white;
+  font-size: 2em;
+}
+
+.gray-background {
+  background-color: #f7f7f7;
+}
+
+.height-70 {
+  height: 70vh;
+}
+
+.height-30 {
+  height: 30vh;
+}
+
+.width {
+  width: 100%;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.team-search-bar {
+  width: 80%;
+  padding: 12px;
+  border-radius: 5px;
+  border-color: silver;
+  border-style: solid;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.team-search-bar:focus {
+  outline: #015291;
+  border-color: #015291;
+}
+
+.relative {
+  position: relative;
+}
+
+::placeholder {
+  color: #015291;
+  font-family: Roboto, sans-serif;
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  top: 49%;
+  right: 12%;
+  color: #015291;
+}
+
+.menu-button {
+  border: none;
+  background-color: #015291;
+}
+
+.team-search-button {
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.fifa-logo {
+  background-color: #015291;
+}
+
+.wrapped {
+  flex-wrap: wrap;
+}
+
+.ai-flex-end {
+  align-items: flex-end;
+}
+
+i {
+  cursor: pointer;
+}
+
+.fifa-logo-pic {
+  padding-bottom: 10px;
+}
+
+.team-image {
+  width: 72%;
+  margin-top: 1em;
+  margin-left: 6em;
+}
+
+.stadium-image {
+  width: 100%;
+  margin-top: 1em;
+  padding: 0 1em;
+}
+
+.team-info {
+  font-weight: bold;
+  color: #015291;
+}
