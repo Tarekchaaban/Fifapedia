@@ -133,9 +133,9 @@ i {
 }
 
 .team-image {
-  width: 72%;
+  width: 100%;
   margin-top: 1em;
-  margin-left: 6em;
+  height: 75vh;
 }
 
 .stadium-image {
@@ -145,6 +145,71 @@ i {
 }
 
 .team-info {
-  font-weight: bold;
+  font-weight: bolder;
   color: #015291;
+}
+
+.add-team {
+  background-color: #f7f7f7;
+  color: #015291;
+  padding: 8px 16px;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid #015291;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px gray;
+}
+
+.team-list-header {
+  color: #015291;
+  margin-left: 1em;
+  font-size: 24px;
+  margin-top: 0.2em;
+  margin-bottom: 0;
+}
+
+.list-group {
+  list-style: none;
+}
+
+ul {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.jc-space-around {
+  justify-content: space-around;
+}
+
+.column-one-sixth {
+  flex-basis: 33%;
+  align-self: center;
+}
+
+.column-two-thirds {
+  flex-basis: 66%;
+  align-self: center;
+}
+
+.list-blue-background {
+  background-color: #015291;
+  border-radius: 10px;
+  margin: 0.5em;
+  min-height: 90%;
+}
+
+.team-list-name {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.team-list-logo {
+  max-width: 70%;
+}
+
+img {
+  object-fit: contain;
 }

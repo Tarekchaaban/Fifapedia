@@ -1,15 +1,45 @@
 import React from 'react';
+import TeamList from './team-list';
 
 export default class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTeamSearchChange = this.handleTeamSearchChange.bind(this);
+    this.handleTeamAdd = this.handleTeamAdd.bind(this);
     this.state = {
       teamsearch: '',
       view: '',
-      response: []
+      currentTeam: {},
+      currentUser: 1,
+      teamlist: []
     };
+  }
+
+  componentDidMount() {
+    fetch('/api/teams')
+      .then(response => response.json())
+      .then(data => this.setState({ teamlist: data }))
+      .catch(err => console.error('Fetch Failed!', err));
+  }
+
+  handleTeamAdd(event) {
+    const copy = this.state.teamlist.slice();
+    fetch('/api/teams', {
+      method: 'POST',
+      body: JSON.stringify({ currentTeam: this.state.currentTeam, currentUser: this.state.currentUser }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          teamlist: data.concat(copy),
+          view: 'team list'
+        });
+      })
+      .catch(err => console.error('Post Failed!', err));
   }
 
   handleSubmit(event) {
@@ -19,8 +49,8 @@ export default class TeamSearch extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ response: data });
         this.setState({ view: 'team search' });
+        this.setState({ currentTeam: data.response[0] });
       })
       .catch(err => console.error('Fetch Failed!', err));
   }
@@ -50,20 +80,27 @@ export default class TeamSearch extends React.Component {
           </form>
         </div>
       );
-    } else {
+    } else if (this.state.view === 'team search') {
       return (
         <div className="gray-background">
-          <div className="row jc-center wrapped">
+          <div className="row jc-center wrapped ai-center">
             <div className="col-100-40">
-              <img className="team-image" src={this.state.response.response[0].team.logo} alt="pic of team logo" />
-              <p className="team-info text-align-center">{this.state.response.response[0].team.name} ({this.state.response.response[0].team.code}) | {this.state.response.response[0].team.country} | Est.{this.state.response.response[0].team.founded}</p>
+              <img className="team-image" src={this.state.currentTeam.team.logo} alt="pic of team logo" />
+              <p className="team-info text-align-center">{this.state.currentTeam.team.name} ({this.state.currentTeam.team.code}) | {this.state.currentTeam.team.country} | Est.{this.state.currentTeam.team.founded}</p>
             </div>
             <div className="col-100-40">
-              <img className="stadium-image" src={this.state.response.response[0].venue.image} alt="pic of stadium" />
-              <p className="team-info text-align-center">{this.state.response.response[0].venue.name} | {this.state.response.response[0].venue.city} | Capacity: {this.state.response.response[0].venue.capacity}</p>
+              <img className="stadium-image" src={this.state.currentTeam.venue.image} alt="pic of stadium" />
+              <p className="team-info text-align-center">{this.state.currentTeam.venue.name} | {this.state.currentTeam.venue.city} | Capacity: {this.state.currentTeam.venue.capacity}</p>
+            </div>
+            <div className="col-100-20 text-align-center">
+              <button className="add-team" onClick={this.handleTeamAdd}>Add Team</button>
             </div>
           </div>
         </div>
+      );
+    } else {
+      return (
+        <TeamList view={this.state.view} teamlist={this.state.teamlist} />
       );
     }
   }
