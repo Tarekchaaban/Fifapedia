@@ -3,6 +3,13 @@ const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
+const pg = require('pg');
+const db = new pg.Pool({
+  connectionString: 'postgres://dev:dev@localhost/fifapedia',
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const app = express();
 
@@ -20,6 +27,45 @@ app.get('/api/teamsearch/:teamname', (req, res) => {
     .then(response => response.json())
     .then(data => res.status(200).json(data))
     .catch(err => console.error('Fetch Failed!', err));
+});
+
+app.get('/api/teams', (req, res) => {
+  const sql = `
+    select *
+      from "teams"
+     order by "userId"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
+app.post('/api/teams', (req, res) => {
+  const sql = `
+  insert into "teams" ("teamId", "teamName", "crestUrl", "userId")
+  values ($1, $2, $3, $4)
+  returning *;`;
+  const valuesArray = [req.body.currentTeam.team.id, req.body.currentTeam.team.name, req.body.currentTeam.team.logo, req.body.currentUser];
+  db.query(sql, valuesArray)
+    .then(result => {
+      res.status(201);
+      res.json(result.rows[0]);
+
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+
 });
 
 app.use(errorMiddleware);

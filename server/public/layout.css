@@ -2,8 +2,17 @@
   flex-basis: 100%;
 }
 
+.col-100-20 {
+  flex-basis: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .col-100-40 {
-    flex-basis: 50%;
+    flex-basis: 45%;
+  }
+
+  .col-100-20 {
+    flex-basis: 10%;
+    align-self: center;
   }
 }
