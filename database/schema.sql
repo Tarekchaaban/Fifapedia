@@ -5,7 +5,38 @@ set client_min_messages to warning;
 drop schema "public" cascade;
 
 create schema "public";
-CREATE TABLE "public"."users" (
+ CREATE TABLE "public"."users" (
+	"userId" serial NOT NULL,
+	"username" TEXT NOT NULL UNIQUE,
+	"hashedPassword" TEXT NOT NULL,
+	CONSTRAINT "users_pk" PRIMARY KEY ("userId")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "public"."teams" (
+	"entryId" serial NOT NULL,
+	"teamName" TEXT NOT NULL,
+	"crestUrl" TEXT NOT NULL,
+	"teamId" integer NOT NULL,
+	"userId" integer NOT NULL,
+	CONSTRAINT "teams_pk" PRIMARY KEY ("entryId")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+
+ALTER TABLE "teams" ADD CONSTRAINT "teams_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+
+
+
+
+
+/* CREATE TABLE "public"."users" (
 	"userId" serial NOT NULL,
 	"username" TEXT NOT NULL UNIQUE,
 	"hashedPassword" TEXT NOT NULL,
@@ -29,4 +60,4 @@ CREATE TABLE "public"."teams" (
 
 
 
-ALTER TABLE "teams" ADD CONSTRAINT "teams_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+ALTER TABLE "teams" ADD CONSTRAINT "teams_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId"); */

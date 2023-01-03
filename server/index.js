@@ -33,7 +33,7 @@ app.get('/api/teams', (req, res) => {
   const sql = `
     select *
       from "teams"
-     order by "userId"
+     order by "entryId" desc
   `;
   db.query(sql)
     .then(result => {

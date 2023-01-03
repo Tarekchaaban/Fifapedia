@@ -208,6 +208,7 @@ ul {
 
 .team-list-logo {
   max-width: 70%;
+  min-height: 100%;
 }
 
 img {
