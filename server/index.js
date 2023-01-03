@@ -56,7 +56,7 @@ app.post('/api/teams', (req, res) => {
   db.query(sql, valuesArray)
     .then(result => {
       res.status(201);
-      res.json(result.rows[0]);
+      res.json(result.rows);
 
     })
     .catch(error => {

@@ -34,8 +34,10 @@ export default class TeamSearch extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ teamlist: copy.concat(data) });
-        this.setState({ view: 'team list' });
+        this.setState({
+          teamlist: data.concat(copy),
+          view: 'team list'
+        });
       })
       .catch(err => console.error('Post Failed!', err));
   }
