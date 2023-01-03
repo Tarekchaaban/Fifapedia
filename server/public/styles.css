@@ -161,3 +161,51 @@ i {
   cursor: pointer;
   box-shadow: 1px 1px 2px gray;
 }
+
+.team-list-header {
+  color: #015291;
+  margin-left: 1em;
+  font-size: 24px;
+  margin-top: 0.2em;
+  margin-bottom: 0;
+}
+
+.list-group {
+  list-style: none;
+}
+
+ul {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.jc-space-around {
+  justify-content: space-around;
+}
+
+.column-one-sixth {
+  flex-basis: 33%;
+  align-self: center;
+}
+
+.column-two-thirds {
+  flex-basis: 66%;
+  align-self: center;
+}
+
+.list-blue-background {
+  background-color: #015291;
+  border-radius: 10px;
+  margin: 0.5em;
+  min-height: 90%;
+}
+
+.team-list-name {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.team-list-logo {
+  max-width: 70%;
+}

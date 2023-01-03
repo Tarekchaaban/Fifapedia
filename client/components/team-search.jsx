@@ -1,4 +1,5 @@
 import React from 'react';
+import TeamList from './team-list';
 
 export default class TeamSearch extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class TeamSearch extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ teamlist: data.concat(copy) });
+        this.setState({ teamlist: copy.concat(data) });
         this.setState({ view: 'team list' });
       })
       .catch(err => console.error('Post Failed!', err));
@@ -97,7 +98,7 @@ export default class TeamSearch extends React.Component {
       );
     } else {
       return (
-        <div />
+        <TeamList view={this.state.view} teamlist={this.state.teamlist} />
       );
     }
   }
