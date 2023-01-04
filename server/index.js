@@ -33,7 +33,7 @@ app.get('/api/teams', (req, res) => {
   const sql = `
     select *
       from "teams"
-     order by "userId"
+     order by "entryId" desc
   `;
   db.query(sql)
     .then(result => {
@@ -66,6 +66,40 @@ app.post('/api/teams', (req, res) => {
       });
     });
 
+});
+
+app.delete('/api/teams/:entryId', (req, res) => {
+  const entryId = req.params.entryId;
+  if (entryId < 1) {
+    return (
+      res.status(400).json({
+        error: 'Invalid EntryId'
+      })
+    );
+  }
+  const sql = `
+  delete
+  from "teams"
+  where "entryId" = $1
+  returning *
+  `;
+  const valuesArray = [entryId];
+  db.query(sql, valuesArray)
+    .then(result => {
+      if (!result.rows[0]) {
+        res.status(404).json({
+          error: `Cannot find team with ${entryId}`
+        });
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
 });
 
 app.use(errorMiddleware);
