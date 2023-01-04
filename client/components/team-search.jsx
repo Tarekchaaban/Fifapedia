@@ -7,6 +7,7 @@ export default class TeamSearch extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTeamSearchChange = this.handleTeamSearchChange.bind(this);
     this.handleTeamAdd = this.handleTeamAdd.bind(this);
+    this.handleTeamDelete = this.handleTeamDelete.bind(this);
     this.state = {
       teamsearch: '',
       view: '',
@@ -17,6 +18,13 @@ export default class TeamSearch extends React.Component {
   }
 
   componentDidMount() {
+    fetch('/api/teams')
+      .then(response => response.json())
+      .then(data => this.setState({ teamlist: data }))
+      .catch(err => console.error('Fetch Failed!', err));
+  }
+
+  handleTeamDelete() {
     fetch('/api/teams')
       .then(response => response.json())
       .then(data => this.setState({ teamlist: data }))
@@ -100,7 +108,7 @@ export default class TeamSearch extends React.Component {
       );
     } else {
       return (
-        <TeamList view={this.state.view} teamlist={this.state.teamlist} />
+        <TeamList view={this.state.view} teamlist={this.state.teamlist} handleTeamDelete={this.handleTeamDelete} />
       );
     }
   }

@@ -6,17 +6,36 @@ export default class TeamList extends React.Component {
     this.handleXClick = this.handleXClick.bind(this);
     this.createModal = this.createModal.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
+    this.handleConfirmClick = this.handleConfirmClick.bind(this);
     this.state = {
-      isDeleting: false
+      isDeleting: false,
+      currentEntryId: 0
     };
   }
 
-  handleXClick(event) {
-    this.setState({ isDeleting: true });
+  handleXClick(event, entryId) {
+    this.setState({
+      isDeleting: true,
+      currentEntryId: entryId
+    });
+
   }
 
   handleCancelClick(event) {
     this.setState({ isDeleting: false });
+  }
+
+  handleConfirmClick(event) {
+    fetch(`/api/teams/${this.state.currentEntryId}`, {
+      method: 'DELETE'
+    })
+      .then(response => response)
+      .then(data => {
+        this.props.handleTeamDelete();
+        this.setState({ isDeleting: false });
+      })
+      .catch(err => console.error('Delete failed!', err));
+
   }
 
   createModal() {
@@ -36,7 +55,7 @@ export default class TeamList extends React.Component {
                   <button className="no-button" onClick={this.handleCancelClick}>Cancel</button>
                 </div>
                 <div className="col-50 text-align-center">
-                  <button className="yes-button">Confirm</button>
+                  <button className="yes-button" onClick={this.handleConfirmClick}>Confirm</button>
                 </div>
               </div>
             </div>
@@ -59,7 +78,7 @@ export default class TeamList extends React.Component {
                 <li className="col-100-50" key={team.entryId} id={team.teamId}>
                   <div className="list-blue-background relative">
                     <button className="x-mark-button">
-                      <i className="fa-solid fa-xmark" onClick={this.handleXClick} />
+                      <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
                     </button>
                     <div className="row jc-center">
                       <div className="column-one-sixth">
@@ -89,7 +108,7 @@ export default class TeamList extends React.Component {
                   <li className="col-100-50" key={team.entryId} id={team.teamId}>
                     <div className="list-blue-background relative">
                       <button className="x-mark-button">
-                        <i className="fa-solid fa-xmark" onClick={this.handleXClick} />
+                        <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
                       </button>
                       <div className="row jc-center">
                         <div className="column-one-sixth">
