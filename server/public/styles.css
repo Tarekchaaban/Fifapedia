@@ -54,6 +54,10 @@
   background-color: #f7f7f7;
 }
 
+.col-10 {
+  flex-basis: 1%;
+}
+
 .jc-end {
   justify-content: flex-end;
 }
@@ -326,4 +330,42 @@ img {
   padding-left: 0.3em;
   color: #015291;
   font-weight: bold;
+}
+
+.team-header {
+  color: #015291;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+
+.team-blue-background {
+  background-color: #015291;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.season-select-input {
+  width: 300px;
+  border-radius: 5px;
+  color: gray;
+  border-color: #015291;
+  padding-top: 15px;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.select-button {
+  visibility: none;
+  background-color: #f7f7f7;
+  border: none;
+}
+
+.fa-square-check {
+  font-size: 2.7em;
+  color: #015291;
+}
+
+.as-center {
+  align-self: center;
 }

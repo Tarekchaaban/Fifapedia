@@ -1,5 +1,4 @@
 import React from 'react';
-import TeamSearch from './team-search';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -47,9 +46,9 @@ export default class Header extends React.Component {
           <div className="row">
             <div className="col-30">
               <div className="blue-menu-header">
-                <h2 className="menu-text">Menu</h2>
+                <h2 className="menu-text" onClick={this.handleMenuClick}>Menu</h2>
               </div>
-              <p className="team-search-link" onClick={this.handleTeamSearchLink}>Search for Teams</p>
+              <p className="team-search-link">Search for Teams</p>
               <p className="team-watchlist-link">Team Watchlist</p>
             </div>
             <div className="col-70" onClick={this.handleMenuClick} />
@@ -63,7 +62,7 @@ export default class Header extends React.Component {
     return (
       <div className="blue-header row ai-center jc-space-between">
         <div className="col-75">
-          <h1 className="header-logo" onClick={this.handleTeamSearchLink}>Fifapedia</h1>
+          <h1 className="header-logo">Fifapedia</h1>
           <img className="logo-pic" src="/images/soccer-goal.png" />
         </div>
         <div className="col-25 row jc-end margin-right">
@@ -78,24 +77,17 @@ export default class Header extends React.Component {
   render() {
     const menu = this.createMenu();
     const header = this.createHeader();
-    if (this.state.isClicked === false && this.state.view === '') {
+    if (this.state.isClicked === false) {
       return (
         <div>
           {header}
         </div>
       );
-    } else if (this.state.isClicked === true && this.state.view === '') {
+    } else if (this.state.isClicked === true) {
       return (
         <div>
           {menu}
           {header}
-        </div>
-      );
-    } else if (this.state.isClicked === false && this.state.view === 'team search') {
-      return (
-        <div>
-          {header}
-          <TeamSearch />
         </div>
       );
     }
