@@ -154,7 +154,7 @@ i {
 .team-image {
   width: 100%;
   margin-top: 1em;
-  height: 75vh;
+  max-height: 500px;
 }
 
 .stadium-image {
@@ -340,8 +340,9 @@ img {
 
 .team-blue-background {
   background-color: #015291;
-  width: 100%;
+  width: 300px;
   border-radius: 10px;
+  padding: 2em 0;
 }
 
 .season-select-input {
@@ -368,4 +369,18 @@ img {
 
 .as-center {
   align-self: center;
+}
+
+.season-team-logo {
+  width: 60%;
+}
+
+.player-list-text {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.player-list-photo {
+  max-width: 70%;
 }

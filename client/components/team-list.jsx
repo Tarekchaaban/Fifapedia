@@ -14,7 +14,9 @@ export default class TeamList extends React.Component {
       isDeleting: false,
       currentEntryId: 0,
       view: 'team list',
-      currentTeamId: 0
+      currentTeamId: 0,
+      currentTeamLogo: '',
+      currentTeamName: ''
     };
   }
 
@@ -43,10 +45,12 @@ export default class TeamList extends React.Component {
 
   }
 
-  handleTeamClick(event, teamId) {
+  handleTeamClick(event, teamId, teamName, teamLogo) {
     this.setState({
       view: 'Players',
-      currentTeamId: teamId
+      currentTeamId: teamId,
+      currentTeamName: teamName,
+      currentTeamLogo: teamLogo
     });
   }
 
@@ -90,7 +94,7 @@ export default class TeamList extends React.Component {
                     <button className="x-mark-button">
                       <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
                     </button>
-                    <div className="row jc-center" onClick={e => this.handleTeamClick(e, team.teamId)}>
+                    <div className="row jc-center" onClick={e => this.handleTeamClick(e, team.teamId, team.teamName, team.crestUrl)}>
                       <div className="column-one-sixth">
                         <img className="team-list-logo" src={team.crestUrl} alt='team logo' />
                       </div>
@@ -127,7 +131,7 @@ export default class TeamList extends React.Component {
     } else {
       return (
         <div>
-          <Players teamId={this.state.TeamId} />
+          <Players teamId={this.state.currentTeamId} teamName={this.state.currentTeamName} teamLogo={this.state.currentTeamLogo} />
         </div>
       );
     }
