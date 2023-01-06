@@ -161,6 +161,7 @@ i {
   width: 100%;
   margin-top: 1em;
   padding: 0 1em;
+  max-height: 464px;
 }
 
 .team-info {
