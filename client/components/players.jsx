@@ -1,5 +1,5 @@
 import React from 'react';
-
+import SinglePlayer from './singe-player';
 export default class Players extends React.Component {
   constructor(props) {
     super(props);
@@ -7,10 +7,12 @@ export default class Players extends React.Component {
     this.createPlayerList = this.createPlayerList.bind(this);
     this.handleSeasonChange = this.handleSeasonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePlayerClick = this.handlePlayerClick.bind(this);
     this.state = {
       view: 'searching',
       players: [],
-      season: null
+      season: null,
+      currentPlayerId: 0
     };
   }
 
@@ -31,6 +33,13 @@ export default class Players extends React.Component {
       .catch(err => console.error('Fetch Failed!', err));
   }
 
+  handlePlayerClick(event, playerId) {
+    this.setState({
+      currentPlayerId: playerId,
+      view: 'single player'
+    });
+  }
+
   createPlayerList() {
     return (
       <div>
@@ -39,8 +48,8 @@ export default class Players extends React.Component {
           {
             this.state.players.map(player => {
               return (
-                <li className="col-100-50" key={player.player.id} id={player.player.id}>
-                  <div className="list-blue-background relative">
+                <li className="col-100-50" key={player.player.id} id={player.player.id} onClick={e => this.handlePlayerClick(e, player.player.id)}>
+                  <div className="list-blue-background relative" >
                     <div className="row jc-center">
                       <div className="column-one-sixth">
                         <img className="player-list-photo" src={player.player.photo} alt='player picture' />
@@ -123,6 +132,12 @@ export default class Players extends React.Component {
         <div>
           {form}
           {playerlist}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <SinglePlayer teamId={this.props.teamId} season={this.state.season} currentPlayerId={this.state.currentPlayerId} />
         </div>
       );
     }

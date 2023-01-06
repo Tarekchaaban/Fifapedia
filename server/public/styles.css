@@ -48,6 +48,10 @@
   height: 100vh;
 }
 
+.col-60 {
+  flex-basis: 60%;
+}
+
 .col-30 {
   flex-basis: 30%;
   height: 100vh;
@@ -384,4 +388,40 @@ img {
 
 .player-list-photo {
   max-width: 70%;
+}
+
+.player-card-blue-background {
+  background-color: #015291;
+  margin-top: 1em;
+}
+
+.single-player-image {
+  width: 75%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  max-height: 500px;
+}
+
+.white-outline {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: 2px solid white;
+}
+
+.single-player-name {
+  color: white;
+}
+
+.line-height {
+  line-height: 3px;
+}
+
+.player-stats {
+  color: white;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+.max-height {
+  max-height: 300px;
 }
