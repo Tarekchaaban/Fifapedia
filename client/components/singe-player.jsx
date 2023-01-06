@@ -42,7 +42,7 @@ export default class SinglePlayer extends React.Component {
                     <div className="col-75 white-outline line-height">
                       <p className="player-stats">Position: loading...</p>
                       <p className="player-stats">Age: loading...</p>
-                      <p className="player-stats">Nationality: loading...</p>
+                      <p className="player-stats">Country: loading...</p>
                       <br />
                       <p className="player-stats">Games Played: loading...</p>
                       <p className="player-stats">Passes: loading...</p>

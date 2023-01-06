@@ -57,7 +57,7 @@ export default class Players extends React.Component {
                       <div className="column-two-thirds">
                         <p className="player-list-text">Name: {player.player.name}</p>
                         <p className="player-list-text">Age: {player.player.age}</p>
-                        <p className="player-list-text">Nationality: {player.player.nationality}</p>
+                        <p className="player-list-text">Country: {player.player.nationality}</p>
                         <p className="player-list-text">Position: {player.statistics[0].games.position}</p>
                       </div>
                     </div>
