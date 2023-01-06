@@ -43,6 +43,21 @@
   flex-basis: 100%;
 }
 
+.col-70 {
+  flex-basis: 70%;
+  height: 100vh;
+}
+
+.col-30 {
+  flex-basis: 30%;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.col-10 {
+  flex-basis: 1%;
+}
+
 .jc-end {
   justify-content: flex-end;
 }
@@ -139,7 +154,7 @@ i {
 .team-image {
   width: 100%;
   margin-top: 1em;
-  height: 75vh;
+  max-height: 500px;
 }
 
 .stadium-image {
@@ -291,4 +306,81 @@ img {
   left: 0;
   background-color: rgb(0 0 0 / 60%);
   z-index: 1;
+}
+
+.blue-menu-header {
+  background-color: #015291;
+  height: 50px;
+  color: white;
+  padding-top: 0.5em;
+  padding-left: 0.3em;
+}
+
+.menu-text {
+  margin: 0;
+}
+
+.team-search-link {
+  padding-left: 0.3em;
+  color: #015291;
+  font-weight: bold;
+}
+
+.team-watchlist-link {
+  padding-left: 0.3em;
+  color: #015291;
+  font-weight: bold;
+}
+
+.team-header {
+  color: #015291;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+
+.team-blue-background {
+  background-color: #015291;
+  width: 300px;
+  border-radius: 10px;
+  padding: 2em 0;
+}
+
+.season-select-input {
+  width: 300px;
+  border-radius: 5px;
+  color: gray;
+  border-color: #015291;
+  padding-top: 15px;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.select-button {
+  visibility: none;
+  background-color: #f7f7f7;
+  border: none;
+}
+
+.fa-square-check {
+  font-size: 2.7em;
+  color: #015291;
+}
+
+.as-center {
+  align-self: center;
+}
+
+.season-team-logo {
+  width: 60%;
+}
+
+.player-list-text {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.player-list-photo {
+  max-width: 70%;
 }

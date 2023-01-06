@@ -1,4 +1,5 @@
 import React from 'react';
+import Players from './players';
 
 export default class TeamList extends React.Component {
   constructor(props) {
@@ -7,9 +8,15 @@ export default class TeamList extends React.Component {
     this.createModal = this.createModal.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleConfirmClick = this.handleConfirmClick.bind(this);
+    this.handleTeamClick = this.handleTeamClick.bind(this);
+    this.createTeamList = this.createTeamList.bind(this);
     this.state = {
       isDeleting: false,
-      currentEntryId: 0
+      currentEntryId: 0,
+      view: 'team list',
+      currentTeamId: 0,
+      currentTeamLogo: '',
+      currentTeamName: ''
     };
   }
 
@@ -36,6 +43,15 @@ export default class TeamList extends React.Component {
       })
       .catch(err => console.error('Delete failed!', err));
 
+  }
+
+  handleTeamClick(event, teamId, teamName, teamLogo) {
+    this.setState({
+      view: 'Players',
+      currentTeamId: teamId,
+      currentTeamName: teamName,
+      currentTeamLogo: teamLogo
+    });
   }
 
   createModal() {
@@ -65,14 +81,12 @@ export default class TeamList extends React.Component {
     );
   }
 
-  render() {
-    const modal = this.createModal();
-    if (this.props.view === 'team list' && this.state.isDeleting === false) {
-      return (
-        <div>
-          <h1 className="team-list-header">Teams</h1>
-          <ul className="list-group shadow-sm row wrapped">
-            {
+  createTeamList() {
+    return (
+      <div>
+        <h1 className="team-list-header">Teams</h1>
+        <ul className="list-group shadow-sm row wrapped">
+          {
             this.props.teamlist.map(team => {
               return (
                 <li className="col-100-50" key={team.entryId} id={team.teamId}>
@@ -80,7 +94,7 @@ export default class TeamList extends React.Component {
                     <button className="x-mark-button">
                       <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
                     </button>
-                    <div className="row jc-center">
+                    <div className="row jc-center" onClick={e => this.handleTeamClick(e, team.teamId, team.teamName, team.crestUrl)}>
                       <div className="column-one-sixth">
                         <img className="team-list-logo" src={team.crestUrl} alt='team logo' />
                       </div>
@@ -93,37 +107,31 @@ export default class TeamList extends React.Component {
               );
             })
           }
-          </ul>
+        </ul>
+      </div>
+    );
+  }
+
+  render() {
+    const teamlist = this.createTeamList();
+    const modal = this.createModal();
+    if (this.state.view === 'team list' && this.state.isDeleting === false) {
+      return (
+        <div>
+          {teamlist}
         </div>
       );
-    } else if (this.props.view === 'team list' && this.state.isDeleting === true) {
+    } else if (this.state.view === 'team list' && this.state.isDeleting === true) {
       return (
         <div>
           {modal}
-          <h1 className="team-list-header">Teams</h1>
-          <ul className="list-group shadow-sm row wrapped">
-            {
-              this.props.teamlist.map(team => {
-                return (
-                  <li className="col-100-50" key={team.entryId} id={team.teamId}>
-                    <div className="list-blue-background relative">
-                      <button className="x-mark-button">
-                        <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
-                      </button>
-                      <div className="row jc-center">
-                        <div className="column-one-sixth">
-                          <img className="team-list-logo" src={team.crestUrl} alt='team logo' />
-                        </div>
-                        <div className="column-two-thirds">
-                          <p className="team-list-name">{team.teamName}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                );
-              })
-            }
-          </ul>
+          {teamlist}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Players teamId={this.state.currentTeamId} teamName={this.state.currentTeamName} teamLogo={this.state.currentTeamLogo} />
         </div>
       );
     }

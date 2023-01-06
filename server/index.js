@@ -29,6 +29,19 @@ app.get('/api/teamsearch/:teamname', (req, res) => {
     .catch(err => console.error('Fetch Failed!', err));
 });
 
+app.get('/api/players/:teamId/:season', (req, res) => {
+  fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${req.params.teamId}&season=${req.params.season}`, {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '3e6df72b18msh42bd29bf1a7c124p1c6cfbjsn347a96b426a4',
+      'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+    }
+  })
+    .then(response => response.json())
+    .then(data => res.status(200).json(data))
+    .catch(err => console.error('Fetch Failed!', err));
+});
+
 app.get('/api/teams', (req, res) => {
   const sql = `
     select *
