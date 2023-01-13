@@ -1,5 +1,5 @@
 import React from 'react';
-import SinglePlayer from './singe-player';
+import SinglePlayer from './single-player';
 export default class Players extends React.Component {
   constructor(props) {
     super(props);
@@ -27,8 +27,10 @@ export default class Players extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ view: 'searched' });
-        this.setState({ players: data.response });
+        this.setState({
+          view: 'searched',
+          players: data.response
+        });
       })
       .catch(err => console.error('Fetch Failed!', err));
   }
