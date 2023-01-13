@@ -1,5 +1,4 @@
 import React from 'react';
-import TeamList from './team-list';
 
 export default class TeamSearch extends React.Component {
   constructor(props) {
@@ -48,6 +47,7 @@ export default class TeamSearch extends React.Component {
         });
       })
       .catch(err => console.error('Post Failed!', err));
+    window.location.hash = '#teams';
   }
 
   handleSubmit(event) {
@@ -101,14 +101,12 @@ export default class TeamSearch extends React.Component {
               <p className="team-info text-align-center">{this.state.currentTeam.venue.name} | {this.state.currentTeam.venue.city} | Capacity: {this.state.currentTeam.venue.capacity}</p>
             </div>
             <div className="col-100-20 text-align-center">
-              <button className="add-team" onClick={this.handleTeamAdd}>Add Team</button>
+              <button className="add-team" onClick={this.handleTeamAdd}>
+                Add Team
+              </button>
             </div>
           </div>
         </div>
-      );
-    } else {
-      return (
-        <TeamList view={this.state.view} teamlist={this.state.teamlist} handleTeamDelete={this.handleTeamDelete} />
       );
     }
   }

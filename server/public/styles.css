@@ -429,3 +429,34 @@ img {
 .max-height {
   max-height: 300px;
 }
+
+h1 > a {
+  text-decoration: none;
+}
+
+p > a {
+  text-decoration: none;
+}
+
+h1 > a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+p > a:visited {
+  text-decoration: none;
+  color: #015291;
+}
+
+season-select-input:focus {
+  outline: #015291;
+  border-color: #015291;
+}
+
+.xmark2 {
+  position: absolute;
+  top: 75px;
+  right: 250px;
+  color: #015291;
+  font-size: 24px;
+}
