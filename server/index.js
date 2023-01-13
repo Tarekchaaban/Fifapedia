@@ -20,7 +20,7 @@ app.get('/api/teamsearch/:teamname', (req, res) => {
   fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?search=${req.params.teamname}`, {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '3e6df72b18msh42bd29bf1a7c124p1c6cfbjsn347a96b426a4',
+      'X-RapidAPI-Key': process.env.X_RapidAPI_Key,
       'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     }
   })
@@ -33,7 +33,7 @@ app.get('/api/players/:teamId/:season', (req, res) => {
   fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${req.params.teamId}&season=${req.params.season}`, {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '3e6df72b18msh42bd29bf1a7c124p1c6cfbjsn347a96b426a4',
+      'X-RapidAPI-Key': process.env.X_RapidAPI_Key,
       'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     }
   })
@@ -45,7 +45,7 @@ app.get('/api/players/:playerId/:teamId/:season', (req, res) => {
   fetch(`https://api-football-v1.p.rapidapi.com/v3/players?id=${req.params.playerId}&team=${req.params.teamId}&season=${req.params.season}`, {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '3e6df72b18msh42bd29bf1a7c124p1c6cfbjsn347a96b426a4',
+      'X-RapidAPI-Key': process.env.X_RapidAPI_Key,
       'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
     }
   })

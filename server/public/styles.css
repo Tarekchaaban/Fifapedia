@@ -153,12 +153,13 @@ i {
 
 .fifa-logo-pic {
   padding-bottom: 10px;
+  width: 90%;
 }
 
 .team-image {
   width: 100%;
   margin-top: 1em;
-  max-height: 500px;
+  max-height: 450px;
 }
 
 .stadium-image {
@@ -341,6 +342,7 @@ img {
   color: #015291;
   font-weight: bold;
   text-shadow: 1px 1px 1px black;
+  margin-bottom: 5px;
 }
 
 .team-blue-background {
@@ -351,7 +353,7 @@ img {
 }
 
 .season-select-input {
-  width: 300px;
+  width: 60%;
   border-radius: 5px;
   color: gray;
   border-color: #015291;
