@@ -1,5 +1,4 @@
 import React from 'react';
-import SinglePlayer from './single-player';
 export default class Players extends React.Component {
   constructor(props) {
     super(props);
@@ -7,6 +6,7 @@ export default class Players extends React.Component {
     this.createPlayerList = this.createPlayerList.bind(this);
     this.handleSeasonChange = this.handleSeasonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goBackToTeamList = this.goBackToTeamList.bind(this);
     this.handlePlayerClick = this.handlePlayerClick.bind(this);
     this.state = {
       view: 'searching',
@@ -73,9 +73,15 @@ export default class Players extends React.Component {
     );
   }
 
+  goBackToTeamList(event) {
+    window.location.hash = '#teams';
+
+  }
+
   createForm() {
     return (
       <form className="season-select-form" onSubmit={this.handleSubmit}>
+        <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeamList}/>
         <div className="text-align-center">
           <h1 className="team-header">{this.props.teamName}</h1>
         </div>
@@ -137,11 +143,8 @@ export default class Players extends React.Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          <SinglePlayer teamId={this.props.teamId} season={this.state.season} currentPlayerId={this.state.currentPlayerId} />
-        </div>
-      );
+      window.location.hash = `#player?teamId=${this.props.teamId}&teamName=${this.props.teamName}&teamLogo=${this.props.teamLogo}&playerId=${this.state.currentPlayerId}&season=${this.state.season}`;
+
     }
   }
 }

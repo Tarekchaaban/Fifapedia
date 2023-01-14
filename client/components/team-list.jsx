@@ -144,7 +144,7 @@ export default class TeamList extends React.Component {
         </div>
       );
     } else {
-      window.location.hash = `#team?teamName=${this.state.currentTeamName}?teamId=${this.state.currentTeamId}?teamLogo=${this.state.currentTeamLogo}`;
+      window.location.hash = `#team?teamId=${this.state.currentTeamId}&teamName=${this.state.currentTeamName}&teamLogo=${this.state.currentTeamLogo}`;
     }
   }
 }

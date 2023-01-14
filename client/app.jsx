@@ -4,6 +4,7 @@ import parseRoute from './lib/parse-route.js';
 import Header from './components/header';
 import TeamList from './components/team-list';
 import Players from './components/players';
+import SinglePlayer from './components/single-player';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,10 +31,20 @@ export default class App extends React.Component {
     if (route.path === 'team') {
       const [, queryString] = window.location.hash.split('?');
       const queryParameters = new URLSearchParams(queryString);
-      const teamName = queryParameters.get('teamName');
       const teamId = queryParameters.get('teamId');
+      const teamName = queryParameters.get('teamName');
       const teamLogo = queryParameters.get('teamLogo');
-      return <Players teamName={teamName} teamId={teamId} teamLogo={teamLogo} />;
+      return <Players teamId={teamId} teamName={teamName} teamLogo={teamLogo} />;
+    }
+    if (route.path === 'player') {
+      const [, queryString] = window.location.hash.split('?');
+      const queryParameters = new URLSearchParams(queryString);
+      const teamId = queryParameters.get('teamId');
+      const teamName = queryParameters.get('teamName');
+      const teamLogo = queryParameters.get('teamLogo');
+      const playerId = queryParameters.get('playerId');
+      const season = queryParameters.get('season');
+      return <SinglePlayer teamId={teamId} teamName={teamName} teamLogo={teamLogo} playerId={playerId} season={season} />;
     }
   }
 
