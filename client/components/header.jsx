@@ -47,7 +47,7 @@ export default class Header extends React.Component {
                 <h2 className="menu-text" onClick={this.handleMenuClick}>Menu</h2>
               </div>
               <p><a href="#" className="team-search-link" onClick={this.handleTeamSearchLink}>Search for Teams</a></p>
-              <p><a href="#teams" className="team-watchlist-link" onClick={this.handleTeamWatchlistLink}>Team Watchlist</a></p>
+              <p><a href="#teams" className="team-watchlist-link" onClick={this.handleTeamWatchlistLink}>Team List</a></p>
             </div>
             <div className="col-70" onClick={this.handleMenuClick} />
           </div>

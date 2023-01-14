@@ -1,5 +1,4 @@
 import React from 'react';
-import Players from './players';
 
 export default class TeamList extends React.Component {
   constructor(props) {
@@ -145,11 +144,7 @@ export default class TeamList extends React.Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          <Players teamId={this.state.currentTeamId} teamName={this.state.currentTeamName} teamLogo={this.state.currentTeamLogo} />
-        </div>
-      );
+      window.location.hash = `#team?teamName=${this.state.currentTeamName}?teamId=${this.state.currentTeamId}?teamLogo=${this.state.currentTeamLogo}`;
     }
   }
 }
