@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from './lib/app-context';
 import Home from './pages/home';
 import parseRoute from './lib/parse-route.js';
 import Header from './components/header';
@@ -9,6 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       route: parseRoute(window.location.hash)
     };
   }
@@ -49,11 +51,13 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { user, route } = this.state;
+    const context = { user, route };
     return (
-      <>
+      <AppContext.Provider value={context}>
         <Header />
         {this.renderPage()}
-      </>
+      </AppContext.Provider>
     );
   }
 }
