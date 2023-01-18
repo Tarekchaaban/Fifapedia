@@ -3,6 +3,8 @@ const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
+const ClientError = require('./client-error');
+const argon2 = require('argon2');
 const pg = require('pg');
 const db = new pg.Pool({
   connectionString: 'postgres://dev:dev@localhost/fifapedia',
@@ -15,6 +17,30 @@ const app = express();
 
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
+
+app.post('/api/auth/sign-up', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'username and password are required fields');
+  }
+  argon2.hash(password)
+    .then(hashedPassword => {
+
+      const sql = `
+        insert into "users" ("username", "hashedPassword")
+             values ($1, $2)
+          returning "userId", "username";
+      `;
+
+      const params = [username, hashedPassword];
+      db.query(sql, params)
+        .then(result => {
+          res.status(201).json(result.rows[0]);
+        })
+        .catch(err => next(err));
+    })
+    .catch(err => next(err));
+});
 
 app.get('/api/teamsearch/:teamname', (req, res) => {
   fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?search=${req.params.teamname}`, {

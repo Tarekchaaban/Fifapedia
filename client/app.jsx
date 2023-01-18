@@ -1,6 +1,7 @@
 import React from 'react';
 import AppContext from './lib/app-context';
 import Home from './pages/home';
+import AuthPage from './pages/auth-page';
 import parseRoute from './lib/parse-route.js';
 import Header from './components/header';
 import TeamList from './components/team-list';
@@ -26,6 +27,9 @@ export default class App extends React.Component {
     const { route } = this.state;
     if (route.path === '') {
       return <Home />;
+    }
+    if (route.path === 'sign-in' || route.path === 'sign-up') {
+      return <AuthPage />;
     }
     if (route.path === 'teams') {
       return <TeamList />;
