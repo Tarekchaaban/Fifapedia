@@ -27,14 +27,12 @@ export default class Header extends React.Component {
 
   handleTeamSearchLink(event) {
     this.setState({
-      view: 'team search',
       isClicked: false
     });
   }
 
   handleTeamWatchlistLink(event) {
     this.setState({
-      view: 'watchlist',
       isClicked: false
     });
   }
@@ -48,8 +46,8 @@ export default class Header extends React.Component {
               <div className="blue-menu-header">
                 <h2 className="menu-text" onClick={this.handleMenuClick}>Menu</h2>
               </div>
-              <p className="team-search-link">Search for Teams</p>
-              <p className="team-watchlist-link">Team Watchlist</p>
+              <p><a href="#" className="team-search-link" onClick={this.handleTeamSearchLink}>Search for Teams</a></p>
+              <p><a href="#teams" className="team-watchlist-link" onClick={this.handleTeamWatchlistLink}>Team List</a></p>
             </div>
             <div className="col-70" onClick={this.handleMenuClick} />
           </div>
@@ -62,7 +60,7 @@ export default class Header extends React.Component {
     return (
       <div className="blue-header row ai-center jc-space-between">
         <div className="col-75">
-          <h1 className="header-logo">Fifapedia</h1>
+          <h1 className="header-logo"><a href="#">Fifapedia</a></h1>
           <img className="logo-pic" src="/images/soccer-goal.png" />
         </div>
         <div className="col-25 row jc-end margin-right">

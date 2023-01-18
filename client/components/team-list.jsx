@@ -1,5 +1,4 @@
 import React from 'react';
-import Players from './players';
 
 export default class TeamList extends React.Component {
   constructor(props) {
@@ -8,6 +7,7 @@ export default class TeamList extends React.Component {
     this.createModal = this.createModal.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleConfirmClick = this.handleConfirmClick.bind(this);
+    this.handleTeamDelete = this.handleTeamDelete.bind(this);
     this.handleTeamClick = this.handleTeamClick.bind(this);
     this.createTeamList = this.createTeamList.bind(this);
     this.state = {
@@ -16,8 +16,23 @@ export default class TeamList extends React.Component {
       view: 'team list',
       currentTeamId: 0,
       currentTeamLogo: '',
-      currentTeamName: ''
+      currentTeamName: '',
+      teamlist: []
     };
+  }
+
+  componentDidMount() {
+    fetch('/api/teams')
+      .then(response => response.json())
+      .then(data => this.setState({ teamlist: data }))
+      .catch(err => console.error('Fetch Failed!', err));
+  }
+
+  handleTeamDelete() {
+    fetch('/api/teams')
+      .then(response => response.json())
+      .then(data => this.setState({ teamlist: data }))
+      .catch(err => console.error('Fetch Failed!', err));
   }
 
   handleXClick(event, entryId) {
@@ -38,7 +53,7 @@ export default class TeamList extends React.Component {
     })
       .then(response => response)
       .then(data => {
-        this.props.handleTeamDelete();
+        this.handleTeamDelete();
         this.setState({ isDeleting: false });
       })
       .catch(err => console.error('Delete failed!', err));
@@ -87,7 +102,7 @@ export default class TeamList extends React.Component {
         <h1 className="team-list-header">Teams</h1>
         <ul className="list-group shadow-sm row wrapped">
           {
-            this.props.teamlist.map(team => {
+            this.state.teamlist.map(team => {
               return (
                 <li className="col-100-50" key={team.entryId} id={team.teamId}>
                   <div className="list-blue-background relative">
@@ -129,11 +144,7 @@ export default class TeamList extends React.Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          <Players teamId={this.state.currentTeamId} teamName={this.state.currentTeamName} teamLogo={this.state.currentTeamLogo} />
-        </div>
-      );
+      window.location.hash = `#team?teamId=${this.state.currentTeamId}&teamName=${this.state.currentTeamName}&teamLogo=${this.state.currentTeamLogo}`;
     }
   }
 }

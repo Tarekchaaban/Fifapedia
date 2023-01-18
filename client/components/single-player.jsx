@@ -3,6 +3,7 @@ import React from 'react';
 export default class SinglePlayer extends React.Component {
   constructor(props) {
     super(props);
+    this.goBackToTeam = this.goBackToTeam.bind(this);
     this.state = {
       loaded: false,
       clickedPlayer: {}
@@ -10,7 +11,7 @@ export default class SinglePlayer extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/players/${this.props.currentPlayerId}/${this.props.teamId}/${this.props.season}`, {
+    fetch(`/api/players/${this.props.playerId}/${this.props.teamId}/${this.props.season}`, {
       method: 'GET'
     })
       .then(response => response.json())
@@ -21,6 +22,10 @@ export default class SinglePlayer extends React.Component {
         });
       })
       .catch(err => console.error('Fetch Failed!', err));
+  }
+
+  goBackToTeam(event) {
+    window.location.hash = `#team?teamId=${this.props.teamId}&teamName=${this.props.teamName}&teamLogo=${this.props.teamLogo}&season=${this.props.season}`;
   }
 
   render() {
@@ -66,6 +71,7 @@ export default class SinglePlayer extends React.Component {
     } else if (this.state.loaded === true) {
       return (
         <div>
+          <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeam} />
           <h1 className="team-list-header">Stats: {this.props.season}</h1>
           <div className="row max-height">
             <div className="col-100">
