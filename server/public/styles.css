@@ -460,3 +460,53 @@ season-select-input:focus {
   color: #015291;
   font-size: 24px;
 }
+
+.auth-header {
+  color: #015291;
+}
+
+.auth-statement {
+  color: #8e95a4;
+}
+
+.auth-label {
+  color: #015291;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+.auth-input {
+  border: 2px solid #8e95a4;
+  width: 100%;
+  padding: 1em;
+  border-radius: 7px;
+  font-size: 12px;
+  margin-bottom: 3em;
+  margin-top: 0.5em;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.auth-input::placeholder {
+  color: #8e95a4;
+}
+
+.auth-button {
+  width: 100%;
+  background-color: #015291;
+  color: white;
+  border: none;
+  padding: 0.75em;
+  border-radius: 7px;
+  box-shadow: 0 4px 2px -2px gray;
+  margin-bottom: 2em;
+}
+
+.auth-question {
+  color: #8e95a4;
+  text-align: center;
+}
+
+.blue {
+  color: blue;
+  cursor: pointer;
+}

@@ -36,13 +36,13 @@ export default class AuthPage extends React.Component {
   createForm() {
     const footer = this.createFooter();
     return (
-      <form className="auth-form">
-        <label id="email">
-          <input className="auth-input" type="text" placeholder="email@example.com" value={this.state.username} required />
-        </label>
-        <label id="password">
-          <input className="auth-input" type="password" placeholder="password" value={this.state.password} required />
-        </label>
+      <form id="auth-form">
+        <label className="auth-label" id="username">Username<br/>
+          <input className="auth-input" type="text" placeholder="Please enter username..." value={this.state.username} required />
+        </label><br/>
+        <label className="auth-label" id="password">Password<br/>
+          <input className="auth-input" type="password" placeholder="Please enter password..." value={this.state.password} required />
+        </label><br/>
         {footer}
       </form>
     );
@@ -53,14 +53,14 @@ export default class AuthPage extends React.Component {
       return (
         <>
           <button className="auth-button" type="submit">Sign Up</button>
-          <p className="auth-question">Already have an account? Sign In</p>
+          <p className="auth-question">Already have an account? <span className="blue">Sign In</span></p>
         </>
       );
     } else {
       return (
         <>
           <button className="auth-button" type="submit">Sign in</button>
-          <p className="auth-question">Dont have an account? Sign Up</p>
+          <p className="auth-question">Dont have an account? <span className="blue">Sign Up</span></p>
         </>
       );
     }
