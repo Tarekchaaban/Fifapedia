@@ -8,6 +8,7 @@ export default class Header extends React.Component {
     this.createHeader = this.createHeader.bind(this);
     this.handleTeamSearchLink = this.handleTeamSearchLink.bind(this);
     this.handleTeamWatchlistLink = this.handleTeamWatchlistLink.bind(this);
+    this.handleSignOutLink = this.handleSignOutLink.bind(this);
     this.state = {
       isClicked: false,
       view: ''
@@ -37,6 +38,12 @@ export default class Header extends React.Component {
     });
   }
 
+  handleSignOutLink(event) {
+    this.setState({
+      isClicked: false
+    });
+  }
+
   createMenu() {
     return (
       <div>
@@ -48,6 +55,7 @@ export default class Header extends React.Component {
               </div>
               <p><a href="#" className="team-search-link" onClick={this.handleTeamSearchLink}>Search for Teams</a></p>
               <p><a href="#teams" className="team-watchlist-link" onClick={this.handleTeamWatchlistLink}>Team List</a></p>
+              <p className="team-search-link" onClick={this.context.handleSignOut}><a onClick={this.handleSignOutLink}>Sign Out</a></p>
             </div>
             <div className="col-70" onClick={this.handleMenuClick} />
           </div>

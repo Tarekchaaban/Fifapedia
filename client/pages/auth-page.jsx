@@ -13,6 +13,7 @@ export default class AuthPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.switchToSignIn = this.switchToSignIn.bind(this);
     this.switchToSignUp = this.switchToSignUp.bind(this);
+    this.demoAccountAutoFill = this.demoAccountAutoFill.bind(this);
     this.state = {
       username: '',
       password: '',
@@ -54,11 +55,31 @@ export default class AuthPage extends React.Component {
   }
 
   switchToSignIn() {
-    this.setState({ action: 'sign-in' });
+    if (this.state.action === 'sign-up') {
+      this.setState({
+        action: 'sign-in',
+        username: '',
+        password: ''
+      });
+    }
   }
 
   switchToSignUp() {
-    this.setState({ action: 'sign-up' });
+    if (this.state.action === 'sign-in') {
+      this.setState({
+        action: 'sign-up',
+        username: '',
+        password: ''
+      });
+    }
+  }
+
+  demoAccountAutoFill(event) {
+    this.setState({
+      action: 'sign-in',
+      username: 'test3',
+      password: 'test3'
+    });
   }
 
   createHeader() {
@@ -99,6 +120,7 @@ export default class AuthPage extends React.Component {
       return (
         <>
           <button className="auth-button" type="submit">Sign Up</button>
+          <button onClick={this.demoAccountAutoFill} className="auth-button" type="none">Demo Account Auto-Fill</button>
           <p className="auth-question">Already have an account? <span onClick={this.switchToSignIn} className="blue">Sign In</span></p>
         </>
       );

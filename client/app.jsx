@@ -40,6 +40,7 @@ export default class App extends React.Component {
   handleSignOut() {
     window.localStorage.removeItem('fifa-jwt');
     this.setState({ user: null });
+    window.location.hash = '';
   }
 
   renderPage() {
