@@ -58,6 +58,12 @@
   background-color: #f7f7f7;
 }
 
+.col-40 {
+  flex-basis: 40%;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
 .col-10 {
   flex-basis: 1%;
 }
@@ -455,9 +461,9 @@ season-select-input:focus {
 
 .xmark2 {
   position: absolute;
-  top: 75px;
-  right: 250px;
-  color: #015291;
+  top: 17.5%;
+  right: 22.3%;
+  color: white;
   font-size: 24px;
 }
 

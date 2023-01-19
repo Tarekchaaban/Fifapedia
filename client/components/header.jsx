@@ -42,7 +42,7 @@ export default class Header extends React.Component {
       <div>
         <div className="overlay">
           <div className="row">
-            <div className="col-30">
+            <div className="col-40">
               <div className="blue-menu-header">
                 <h2 className="menu-text" onClick={this.handleMenuClick}>Menu</h2>
               </div>
