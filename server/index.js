@@ -2,10 +2,12 @@ require('dotenv/config');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
+const authorizationMiddleware = require('./authorization-middleware');
 const jsonMiddleware = express.json();
 const ClientError = require('./client-error');
 const argon2 = require('argon2');
 const pg = require('pg');
+const jwt = require('jsonwebtoken');
 const db = new pg.Pool({
   connectionString: 'postgres://dev:dev@localhost/fifapedia',
   ssl: {
@@ -40,6 +42,42 @@ app.post('/api/auth/sign-up', (req, res, next) => {
         .catch(err => next(err));
     })
     .catch(err => next(err));
+});
+
+app.post('/api/auth/sign-in', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'username and password are required fields');
+  }
+
+  const sql = `
+    select "userId",
+           "hashedPassword"
+      from "users"
+     where "username" = $1
+  `;
+
+  const params = [username];
+  db.query(sql, params)
+    .then(result => {
+      const { userId, hashedPassword } = result.rows[0];
+      if (!userId) {
+        throw new ClientError(401, 'Invalid login');
+      }
+
+      argon2.verify(hashedPassword, password)
+        .then(isMatching => {
+          if (!isMatching) {
+            throw new ClientError(401, 'Invalid login');
+          }
+          const payload = { username, userId };
+          const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+          res.status(200).json({ token, user: payload });
+        })
+        .catch(err => next(err));
+    })
+    .catch(err => next(err));
+
 });
 
 app.get('/api/teamsearch/:teamname', (req, res) => {
@@ -97,7 +135,6 @@ app.get('/api/teams', (req, res) => {
       });
     });
 });
-
 app.post('/api/teams', (req, res) => {
   const sql = `
   insert into "teams" ("teamId", "teamName", "crestUrl", "userId")
@@ -153,6 +190,7 @@ app.delete('/api/teams/:entryId', (req, res) => {
     });
 });
 
+app.use(authorizationMiddleware);
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AppContext from '../lib/app-context';
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -57,19 +57,30 @@ export default class Header extends React.Component {
   }
 
   createHeader() {
-    return (
-      <div className="blue-header row ai-center jc-space-between">
-        <div className="col-75">
-          <h1 className="header-logo"><a href="#">Fifapedia</a></h1>
-          <img className="logo-pic" src="/images/soccer-goal.png" />
+    if (!this.context.user) {
+      return (
+        <div className="blue-header row ai-center jc-space-between">
+          <div className="col-75">
+            <h1 className="header-logo"><a href="#">Fifapedia</a></h1>
+            <img className="logo-pic" src="/images/soccer-goal.png" />
+          </div>
         </div>
-        <div className="col-25 row jc-end margin-right">
-          <button className="menu-button">
-            <i className="fa-solid fa-bars" onClick={this.handleMenuClick} />
-          </button>
+      );
+    } else if (this.context.user) {
+      return (
+        <div className="blue-header row ai-center jc-space-between">
+          <div className="col-75">
+            <h1 className="header-logo"><a href="#">Fifapedia</a></h1>
+            <img className="logo-pic" src="/images/soccer-goal.png" />
+          </div>
+          <div className="col-25 row jc-end margin-right">
+            <button className="menu-button">
+              <i className="fa-solid fa-bars" onClick={this.handleMenuClick} />
+            </button>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   render() {
@@ -91,3 +102,5 @@ export default class Header extends React.Component {
     }
   }
 }
+
+Header.contextType = AppContext;

@@ -7,9 +7,13 @@ import Header from './components/header';
 import TeamList from './components/team-list';
 import Players from './components/players';
 import SinglePlayer from './components/single-player';
+import jwtDecode from 'jwt-decode';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
     this.state = {
       user: null,
       route: parseRoute(window.location.hash)
@@ -21,6 +25,21 @@ export default class App extends React.Component {
       const route = parseRoute(window.location.hash);
       this.setState({ route });
     });
+    const token = window.localStorage.getItem('fifa-jwt');
+    const user = token ? jwtDecode(token) : null;
+    this.setState({ user });
+  }
+
+  handleSignIn(results) {
+    const { user, token } = results;
+    window.localStorage.setItem('fifa-jwt', token);
+    this.setState({ user });
+    window.location.hash = '';
+  }
+
+  handleSignOut() {
+    window.localStorage.removeItem('fifa-jwt');
+    this.setState({ user: null });
   }
 
   renderPage() {
@@ -28,7 +47,7 @@ export default class App extends React.Component {
     if (route.path === '') {
       return <Home />;
     }
-    if (route.path === 'sign-in' || route.path === 'sign-up') {
+    if (route.path === 'auth-page') {
       return <AuthPage />;
     }
     if (route.path === 'teams') {
@@ -56,7 +75,9 @@ export default class App extends React.Component {
 
   render() {
     const { user, route } = this.state;
-    const context = { user, route };
+    const handleSignIn = this.handleSignIn;
+    const handleSignOut = this.handleSignOut;
+    const context = { handleSignIn, handleSignOut, user, route };
     return (
       <AppContext.Provider value={context}>
         <Header />

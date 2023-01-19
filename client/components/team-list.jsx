@@ -22,7 +22,7 @@ export default class TeamList extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/teams')
+    fetch('/api/teams/')
       .then(response => response.json())
       .then(data => this.setState({ teamlist: data }))
       .catch(err => console.error('Fetch Failed!', err));

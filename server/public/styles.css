@@ -486,6 +486,10 @@ season-select-input:focus {
   box-shadow: 0 4px 2px -2px gray;
 }
 
+.auth-input:focus {
+  outline: 2px solid #015291;
+}
+
 .auth-input::placeholder {
   color: #8e95a4;
 }
@@ -499,6 +503,7 @@ season-select-input:focus {
   border-radius: 7px;
   box-shadow: 0 4px 2px -2px gray;
   margin-bottom: 2em;
+  cursor: pointer;
 }
 
 .auth-question {
