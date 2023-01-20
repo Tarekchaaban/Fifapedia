@@ -531,3 +531,7 @@ season-select-input:focus {
 .menu-hidden {
   transform: translateY(-100%);
 }
+
+.box-shadow {
+  box-shadow: 0 4px 2px -2px black;
+}

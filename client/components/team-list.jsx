@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 
 export default class TeamList extends React.Component {
   constructor(props) {
@@ -105,7 +106,7 @@ export default class TeamList extends React.Component {
             this.state.teamlist.map(team => {
               return (
                 <li className="col-100-50" key={team.entryId} id={team.teamId}>
-                  <div className="list-blue-background relative">
+                  <div className="list-blue-background relative box-shadow">
                     <button className="x-mark-button">
                       <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
                     </button>
@@ -148,3 +149,5 @@ export default class TeamList extends React.Component {
     }
   }
 }
+
+TeamList.contextType = AppContext;

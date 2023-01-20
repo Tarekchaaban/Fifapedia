@@ -135,6 +135,7 @@ app.get('/api/teams', (req, res) => {
       });
     });
 });
+
 app.post('/api/teams', (req, res) => {
   const sql = `
   insert into "teams" ("teamId", "teamName", "crestUrl", "userId")
