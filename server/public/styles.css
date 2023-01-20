@@ -58,6 +58,12 @@
   background-color: #f7f7f7;
 }
 
+.col-40 {
+  flex-basis: 40%;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
 .col-10 {
   flex-basis: 1%;
 }
@@ -330,6 +336,7 @@ img {
   padding-left: 0.3em;
   color: #015291;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .team-watchlist-link {
@@ -455,8 +462,76 @@ season-select-input:focus {
 
 .xmark2 {
   position: absolute;
-  top: 75px;
-  right: 250px;
-  color: #015291;
+  top: 17.5%;
+  right: 22.3%;
+  color: white;
   font-size: 24px;
+}
+
+.auth-header {
+  color: #015291;
+}
+
+.auth-statement {
+  color: #8e95a4;
+}
+
+.auth-label {
+  color: #015291;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+.auth-input {
+  border: 2px solid #8e95a4;
+  width: 100%;
+  padding: 1em;
+  border-radius: 7px;
+  font-size: 12px;
+  margin-bottom: 3em;
+  margin-top: 0.5em;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.auth-input:focus {
+  outline: 2px solid #015291;
+}
+
+.auth-input::placeholder {
+  color: #8e95a4;
+}
+
+.auth-button {
+  width: 100%;
+  background-color: #015291;
+  color: white;
+  border: none;
+  padding: 0.75em;
+  border-radius: 7px;
+  box-shadow: 0 4px 2px -2px gray;
+  margin-bottom: 2em;
+  cursor: pointer;
+}
+
+.auth-question {
+  color: #8e95a4;
+  text-align: center;
+}
+
+.blue {
+  color: blue;
+  cursor: pointer;
+}
+
+.menu-transition {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-hidden {
+  transform: translateY(-100%);
+}
+
+.box-shadow {
+  box-shadow: 0 4px 2px -2px black;
 }

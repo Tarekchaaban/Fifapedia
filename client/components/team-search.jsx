@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AppContext from '../lib/app-context';
 export default class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ export default class TeamSearch extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/teams')
+    fetch('/api/teams/')
       .then(response => response.json())
       .then(data => this.setState({ teamlist: data }))
       .catch(err => console.error('Fetch Failed!', err));
@@ -34,7 +34,7 @@ export default class TeamSearch extends React.Component {
     const copy = this.state.teamlist.slice();
     fetch('/api/teams', {
       method: 'POST',
-      body: JSON.stringify({ currentTeam: this.state.currentTeam, currentUser: this.state.currentUser }),
+      body: JSON.stringify({ currentTeam: this.state.currentTeam, currentUser: this.context.user.userId }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -111,3 +111,5 @@ export default class TeamSearch extends React.Component {
     }
   }
 }
+
+TeamSearch.contextType = AppContext;
