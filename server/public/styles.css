@@ -522,3 +522,12 @@ season-select-input:focus {
   color: blue;
   cursor: pointer;
 }
+
+.menu-transition {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-hidden {
+  transform: translateY(-100%);
+}
