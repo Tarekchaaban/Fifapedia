@@ -118,24 +118,6 @@ app.get('/api/players/:playerId/:teamId/:season', (req, res) => {
     .catch(err => console.error('Fetch Failed!', err));
 });
 
-app.get('/api/teams', (req, res) => {
-  const sql = `
-    select *
-      from "teams"
-     order by "entryId" desc
-  `;
-  db.query(sql)
-    .then(result => {
-      res.json(result.rows);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'an unexpected error occurred'
-      });
-    });
-});
-
 app.post('/api/teams', (req, res) => {
   const sql = `
   insert into "teams" ("teamId", "teamName", "crestUrl", "userId")
@@ -192,6 +174,28 @@ app.delete('/api/teams/:entryId', (req, res) => {
 });
 
 app.use(authorizationMiddleware);
+
+app.get('/api/teams', (req, res) => {
+  const { userId } = req.user;
+  const sql = `
+    select *
+      from "teams"
+      where "userId" = $1
+     order by "entryId" desc
+  `;
+  const valuesArray = [userId];
+  db.query(sql, valuesArray)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

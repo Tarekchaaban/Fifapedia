@@ -51,7 +51,7 @@ export default class Players extends React.Component {
             this.state.players.map(player => {
               return (
                 <li className="col-100-50" key={player.player.id} id={player.player.id} onClick={e => this.handlePlayerClick(e, player.player.id)}>
-                  <div className="list-blue-background relative" >
+                  <div className="list-blue-background relative box-shadow" >
                     <div className="row jc-center">
                       <div className="column-one-sixth">
                         <img className="player-list-photo" src={player.player.photo} alt='player picture' />
