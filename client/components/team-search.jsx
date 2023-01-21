@@ -17,14 +17,28 @@ export default class TeamSearch extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/teams/')
+    const req = {
+      method: 'GET',
+      headers: {
+        'x-access-token': localStorage.getItem('fifa-jwt')
+      },
+      user: this.context.user
+    };
+    fetch('/api/teams/', req)
       .then(response => response.json())
       .then(data => this.setState({ teamlist: data }))
       .catch(err => console.error('Fetch Failed!', err));
   }
 
   handleTeamDelete() {
-    fetch('/api/teams')
+    const req = {
+      method: 'GET',
+      headers: {
+        'x-access-token': localStorage.getItem('fifa-jwt')
+      },
+      user: this.context.user
+    };
+    fetch('/api/teams', req)
       .then(response => response.json())
       .then(data => this.setState({ teamlist: data }))
       .catch(err => console.error('Fetch Failed!', err));

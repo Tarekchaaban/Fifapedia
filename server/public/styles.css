@@ -325,7 +325,7 @@ img {
   height: 50px;
   color: white;
   padding-top: 0.5em;
-  padding-left: 0.3em;
+  padding-left: 1.5em;
 }
 
 .menu-text {
@@ -368,6 +368,11 @@ img {
   font-size: 15px;
   text-align: center;
   margin-top: 0.5em;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.season-select-input:focus {
+  outline: 1.5px solid #015291;
 }
 
 .select-button {
@@ -533,5 +538,5 @@ season-select-input:focus {
 }
 
 .box-shadow {
-  box-shadow: 0 4px 2px -2px black;
+  box-shadow: 0 4px 2px -2px gray;
 }
