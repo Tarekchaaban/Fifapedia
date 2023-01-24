@@ -13,11 +13,13 @@ export default class AuthPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.switchToSignIn = this.switchToSignIn.bind(this);
     this.switchToSignUp = this.switchToSignUp.bind(this);
+    this.showErrorMessage = this.showErrorMessage.bind(this);
     this.demoAccountAutoFill = this.demoAccountAutoFill.bind(this);
     this.state = {
       username: '',
       password: '',
-      action: 'sign-up'
+      action: 'sign-up',
+      error: null
     };
   }
 
@@ -41,13 +43,21 @@ export default class AuthPage extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        if (this.state.action === 'sign-up') {
+        const { error } = result;
+        if (result.error) {
+          this.setState({
+            error,
+            username: '',
+            password: ''
+          });
+        }
+        if (this.state.action === 'sign-up' & !error) {
           this.setState({
             username: '',
             password: '',
             action: 'sign-in'
           });
-        } else if (this.state.action === 'sign-in') {
+        } else if (this.state.action === 'sign-in' & !error) {
           this.context.handleSignIn(result);
           this.setState({ username: '', password: '' });
         }
@@ -59,7 +69,8 @@ export default class AuthPage extends React.Component {
       this.setState({
         action: 'sign-in',
         username: '',
-        password: ''
+        password: '',
+        error: null
       });
     }
   }
@@ -69,7 +80,8 @@ export default class AuthPage extends React.Component {
       this.setState({
         action: 'sign-up',
         username: '',
-        password: ''
+        password: '',
+        error: null
       });
     }
   }
@@ -77,8 +89,9 @@ export default class AuthPage extends React.Component {
   demoAccountAutoFill(event) {
     this.setState({
       action: 'sign-in',
-      username: 'test3',
-      password: 'test3'
+      username: 'demo',
+      password: 'password123',
+      error: null
     });
   }
 
@@ -134,7 +147,18 @@ export default class AuthPage extends React.Component {
     }
   }
 
+  showErrorMessage() {
+    const { error } = this.state;
+    if (error) {
+      return <p className='input-error-message'><i className="fa-solid fa-circle-exclamation" /> {error}.</p>;
+    } else {
+      <>
+      </>;
+    }
+  }
+
   render() {
+    const error = this.showErrorMessage();
     const header = this.createHeader();
     const form = this.createForm();
     if (this.context.user) return <Redirect to="" />;
@@ -143,8 +167,9 @@ export default class AuthPage extends React.Component {
       <div className="row jc-center">
         <div className="column-full">
           <div className="row jc-center">
-            <div className="col-full">
+            <div>
               {header}
+              {error}
               {form}
             </div>
           </div>
