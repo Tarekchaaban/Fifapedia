@@ -76,8 +76,12 @@ export default class TeamSearch extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ view: 'team search' });
-        this.setState({ currentTeam: data.response[0] });
+        if (data.results === 0) {
+          window.location.hash = 'not-found';
+        } else {
+          this.setState({ view: 'team search' });
+          this.setState({ currentTeam: data.response[0] });
+        }
       })
       .catch(err => console.error('Fetch Failed!', err));
   }

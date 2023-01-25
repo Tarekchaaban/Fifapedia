@@ -7,6 +7,7 @@ import Header from './components/header';
 import TeamList from './components/team-list';
 import Players from './components/players';
 import SinglePlayer from './components/single-player';
+import NotFound from './pages/not-found';
 import jwtDecode from 'jwt-decode';
 
 export default class App extends React.Component {
@@ -71,6 +72,9 @@ export default class App extends React.Component {
       const playerId = queryParameters.get('playerId');
       const season = queryParameters.get('season');
       return <SinglePlayer teamId={teamId} teamName={teamName} teamLogo={teamLogo} playerId={playerId} season={season} />;
+    }
+    if (route.path === 'not-found') {
+      return <NotFound />;
     }
   }
 

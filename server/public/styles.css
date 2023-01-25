@@ -553,3 +553,12 @@ season-select-input:focus {
 .green {
   color: green;
 }
+
+.not-found-text {
+  color: #015291;
+}
+
+.not-found-return {
+  color: blue;
+  text-decoration: none;
+}

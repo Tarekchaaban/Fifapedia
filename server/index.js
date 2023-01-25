@@ -81,7 +81,7 @@ app.post('/api/auth/sign-in', (req, res, next) => {
 
 });
 
-app.get('/api/teamsearch/:teamname', (req, res) => {
+app.get('/api/teamsearch/:teamname', (req, res, next) => {
   fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?search=${req.params.teamname}`, {
     method: 'GET',
     headers: {
@@ -90,8 +90,10 @@ app.get('/api/teamsearch/:teamname', (req, res) => {
     }
   })
     .then(response => response.json())
-    .then(data => res.status(200).json(data))
-    .catch(err => console.error('Fetch Failed!', err));
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => res.status(500).json({ err: err.message }));
 });
 
 app.get('/api/players/:teamId/:season', (req, res) => {
