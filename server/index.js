@@ -60,15 +60,16 @@ app.post('/api/auth/sign-in', (req, res, next) => {
   const params = [username];
   db.query(sql, params)
     .then(result => {
-      const { userId, hashedPassword } = result.rows[0];
-      if (!userId) {
-        throw new ClientError(401, 'Invalid login');
+      const [user] = result.rows;
+      if (!user) {
+        throw new ClientError(401, 'Invalid username or password');
       }
+      const { userId } = user;
 
-      argon2.verify(hashedPassword, password)
+      argon2.verify(user.hashedPassword, password)
         .then(isMatching => {
           if (!isMatching) {
-            throw new ClientError(401, 'Invalid login');
+            throw new ClientError(401, 'Invalid username or password');
           }
           const payload = { username, userId };
           const token = jwt.sign(payload, process.env.TOKEN_SECRET);
@@ -80,7 +81,7 @@ app.post('/api/auth/sign-in', (req, res, next) => {
 
 });
 
-app.get('/api/teamsearch/:teamname', (req, res) => {
+app.get('/api/teamsearch/:teamname', (req, res, next) => {
   fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?search=${req.params.teamname}`, {
     method: 'GET',
     headers: {
@@ -89,8 +90,10 @@ app.get('/api/teamsearch/:teamname', (req, res) => {
     }
   })
     .then(response => response.json())
-    .then(data => res.status(200).json(data))
-    .catch(err => console.error('Fetch Failed!', err));
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => res.status(500).json({ err: err.message }));
 });
 
 app.get('/api/players/:teamId/:season', (req, res) => {

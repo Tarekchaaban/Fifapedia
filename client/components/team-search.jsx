@@ -7,6 +7,7 @@ export default class TeamSearch extends React.Component {
     this.handleTeamSearchChange = this.handleTeamSearchChange.bind(this);
     this.handleTeamAdd = this.handleTeamAdd.bind(this);
     this.handleTeamDelete = this.handleTeamDelete.bind(this);
+    this.handleSearchBack = this.handleSearchBack.bind(this);
     this.state = {
       teamsearch: '',
       view: '',
@@ -64,6 +65,10 @@ export default class TeamSearch extends React.Component {
     window.location.hash = '#teams';
   }
 
+  handleSearchBack(event) {
+    this.setState({ view: '' });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     fetch(`/api/teamsearch/${this.state.teamsearch}`, {
@@ -71,8 +76,12 @@ export default class TeamSearch extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ view: 'team search' });
-        this.setState({ currentTeam: data.response[0] });
+        if (data.results === 0) {
+          window.location.hash = 'not-found';
+        } else {
+          this.setState({ view: 'team search' });
+          this.setState({ currentTeam: data.response[0] });
+        }
       })
       .catch(err => console.error('Fetch Failed!', err));
   }
@@ -88,7 +97,7 @@ export default class TeamSearch extends React.Component {
           <form className="team-search-form" onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-100 row height-70 ai-center jc-center relative">
-                <input name="teamsearch" value={this.state.teamsearch} type="text" className="team-search-bar" id="team-search-input" placeholder="Search for team (e.g. 'Real Madrid')" onChange={this.handleTeamSearchChange} required />
+                <input autoFocus name="teamsearch" value={this.state.teamsearch} type="text" className="team-search-bar" id="team-search-input" placeholder="Search for team (e.g. 'Real Madrid')" onChange={this.handleTeamSearchChange} required />
                 <button type="submit" className="team-search-button">
                   <i className="fa-solid fa-magnifying-glass" />
                 </button>
@@ -115,7 +124,12 @@ export default class TeamSearch extends React.Component {
               <p className="team-info text-align-center">{this.state.currentTeam.venue.name} | {this.state.currentTeam.venue.city} | Capacity: {this.state.currentTeam.venue.capacity}</p>
             </div>
             <div className="col-100-20 text-align-center">
-              <button className="add-team" onClick={this.handleTeamAdd}>
+              &nbsp;
+              <button className="add-team padding input-error-message" onClick={this.handleSearchBack}>
+                Go Back
+              </button>
+              &nbsp;
+              <button className="add-team green" onClick={this.handleTeamAdd}>
                 Add Team
               </button>
             </div>
