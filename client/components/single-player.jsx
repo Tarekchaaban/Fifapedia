@@ -85,21 +85,21 @@ export default class SinglePlayer extends React.Component {
                       <h2 className="single-player-name">{this.state.clickedPlayer.player.name}</h2>
                     </div>
                     <div className="col-75 white-outline line-height">
-                      <p className="player-stats">Position: {this.state.clickedPlayer.statistics[0].games.position}</p>
-                      <p className="player-stats">Age: {this.state.clickedPlayer.player.age}</p>
-                      <p className="player-stats">Nationality: {this.state.clickedPlayer.player.nationality}</p>
+                      <p className="player-stats">Position: <b>{this.state.clickedPlayer.statistics[0].games.position}</b></p>
+                      <p className="player-stats">Age: <b>{this.state.clickedPlayer.player.age}</b></p>
+                      <p className="player-stats">Nationality: <b>{this.state.clickedPlayer.player.nationality}</b></p>
                       <br />
-                      <p className="player-stats">Games Played: {this.state.clickedPlayer.statistics[0].games.appearences}</p>
-                      <p className="player-stats">Passes: {this.state.clickedPlayer.statistics[0].passes.total}</p>
-                      <p className="player-stats">Pass Accuaracy: {this.state.clickedPlayer.statistics[0].passes.accuracy}%</p>
+                      <p className="player-stats">Games Played: <b>{this.state.clickedPlayer.statistics[0].games.appearences}</b></p>
+                      <p className="player-stats">Passes: <b>{this.state.clickedPlayer.statistics[0].passes.total}</b></p>
+                      <p className="player-stats">Pass Accuaracy: <b>{this.state.clickedPlayer.statistics[0].passes.accuracy}%</b></p>
                       <br />
-                      <p className="player-stats">Goals(scored): {this.state.clickedPlayer.statistics[0].goals.total}</p>
-                      <p className="player-stats">Goals(assisted): {this.state.clickedPlayer.statistics[0].goals.assists}</p>
-                      <p className="player-stats">Goals(saved): {this.state.clickedPlayer.statistics[0].goals.saves}</p>
+                      <p className="player-stats">Goals(scored): <b>{this.state.clickedPlayer.statistics[0].goals.total}</b></p>
+                      <p className="player-stats">Goals(assisted): <b>{this.state.clickedPlayer.statistics[0].goals.assists}</b></p>
+                      <p className="player-stats">Goals(saved): <b>{this.state.clickedPlayer.statistics[0].goals.saves}</b></p>
                       <br />
-                      <p className="player-stats">Fouls Committed: {this.state.clickedPlayer.statistics[0].fouls.committed}</p>
-                      <p className="player-stats">Yellow Cards: {this.state.clickedPlayer.statistics[0].cards.yellow}</p>
-                      <p className="player-stats">Red Cards: {this.state.clickedPlayer.statistics[0].cards.red}</p>
+                      <p className="player-stats">Fouls Committed: <b>{this.state.clickedPlayer.statistics[0].fouls.committed}</b></p>
+                      <p className="player-stats">Yellow Cards: <b>{this.state.clickedPlayer.statistics[0].cards.yellow}</b></p>
+                      <p className="player-stats">Red Cards: <b>{this.state.clickedPlayer.statistics[0].cards.red}</b></p>
                     </div>
                   </div>
                 </div>
