@@ -62,6 +62,12 @@
   flex-basis: 40%;
   height: 100vh;
   background-color: #f7f7f7;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.col-40.open {
+  transform: translateX(0);
 }
 
 .col-10 {
@@ -318,6 +324,11 @@ img {
   left: 0;
   background-color: rgb(0 0 0 / 60%);
   z-index: 1;
+  visibility: hidden;
+}
+
+.overlay.visible {
+  visibility: visible;
 }
 
 .blue-menu-header {
@@ -398,7 +409,6 @@ img {
 .player-list-text {
   color: white;
   font-size: 16px;
-  font-weight: bold;
 }
 
 .player-list-photo {
@@ -434,7 +444,6 @@ img {
 
 .player-stats {
   color: white;
-  font-weight: bold;
   margin-left: 0.5em;
 }
 
@@ -535,6 +544,7 @@ season-select-input:focus {
 
 .menu-hidden {
   transform: translateY(-100%);
+  display: none;
 }
 
 .box-shadow {
@@ -546,8 +556,8 @@ season-select-input:focus {
 }
 
 .padding {
-  padding-left: 1.4em;
-  padding-right: 1.4em;
+  padding-left: 1.425em;
+  padding-right: 1.425em;
 }
 
 .green {
@@ -561,4 +571,13 @@ season-select-input:focus {
 .not-found-return {
   color: blue;
   text-decoration: none;
+}
+
+li {
+  transform: scale(0.95);
+  transition: transform 0.5s;
+}
+
+li:hover {
+  transform: scale(1);
 }

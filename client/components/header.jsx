@@ -10,16 +10,14 @@ export default class Header extends React.Component {
     this.handleTeamWatchlistLink = this.handleTeamWatchlistLink.bind(this);
     this.handleSignOutLink = this.handleSignOutLink.bind(this);
     this.state = {
-      isClicked: false,
-      view: ''
+      isClicked: false
     };
   }
 
   handleMenuClick(event) {
     if (this.state.isClicked === false) {
       this.setState({
-        isClicked: true,
-        view: ''
+        isClicked: true
       });
     } else {
       this.setState({ isClicked: false });
@@ -47,9 +45,9 @@ export default class Header extends React.Component {
   createMenu() {
     return (
       <div>
-        <div className="overlay">
+        <div className={`overlay ${this.state.isClicked ? 'visible' : 'hidden'}`}>
           <div className="row">
-            <div className="col-40">
+            <div className={`col-40 ${this.state.isClicked ? 'open' : ''}`}>
               <div className="blue-menu-header">
                 <h2 className="menu-text" onClick={this.handleMenuClick}>Menu</h2>
               </div>
@@ -94,21 +92,14 @@ export default class Header extends React.Component {
   render() {
     const menu = this.createMenu();
     const header = this.createHeader();
-    if (this.state.isClicked === false) {
-      return (
-        <div>
-          {header}
-        </div>
-      );
-    } else if (this.state.isClicked === true) {
-      return (
-        <div>
-          {menu}
-          {header}
-        </div>
-      );
-    }
+    return (
+      <div>
+        {menu}
+        {header}
+      </div>
+    );
   }
+
 }
 
 Header.contextType = AppContext;

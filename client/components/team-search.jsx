@@ -66,7 +66,10 @@ export default class TeamSearch extends React.Component {
   }
 
   handleSearchBack(event) {
-    this.setState({ view: '' });
+    this.setState({
+      view: '',
+      teamsearch: ''
+    });
   }
 
   handleSubmit(event) {

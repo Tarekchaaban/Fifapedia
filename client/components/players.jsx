@@ -57,10 +57,10 @@ export default class Players extends React.Component {
                         <img className="player-list-photo" src={player.player.photo} alt='player picture' />
                       </div>
                       <div className="column-two-thirds">
-                        <p className="player-list-text">Name: {player.player.name}</p>
-                        <p className="player-list-text">Age: {player.player.age}</p>
-                        <p className="player-list-text">Country: {player.player.nationality}</p>
-                        <p className="player-list-text">Position: {player.statistics[0].games.position}</p>
+                        <p className="player-list-text">Name: <b>{player.player.name}</b></p>
+                        <p className="player-list-text">Age: <b>{player.player.age}</b></p>
+                        <p className="player-list-text">Country: <b>{player.player.nationality}</b></p>
+                        <p className="player-list-text">Position: <b>{player.statistics[0].games.position}</b></p>
                       </div>
                     </div>
                   </div>
