@@ -47,13 +47,11 @@ Try the application live here: TBA
 
 ## :eyes: Preview
 
-### User can create add team to a team list.
+### User can add team to a team list.
 https://user-images.githubusercontent.com/113570457/215300321-96fef710-1236-488d-a6c9-d55106e08068.mp4
 
 
 ### Users can search for players by season.
-
-
 https://user-images.githubusercontent.com/113570457/215300799-e4b19e12-cfc6-486d-8a10-12a8e2aa8654.mp4
 
 
