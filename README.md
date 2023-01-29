@@ -65,7 +65,7 @@ https://user-images.githubusercontent.com/113570457/215300799-e4b19e12-cfc6-486d
 
 1. Clone the repository
 ```
-git clone https://github.com/brandon-moy/fifapedia.git
+git clone https://github.com/Tarekchaaban/fifapedia.git
 ```
 2. Install dependencies with Node Package Manager
 ```
