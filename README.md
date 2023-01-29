@@ -39,7 +39,7 @@ Try the application live here: TBA
 - User can delete a team from their list.
 - Users search gameday fixtures.
 - Users can designate a team as their priority or favorite.
-- Users can sig out
+- Users can sign out
 
 ## :books: Stretch Features
 - Users can lookup league standings.
