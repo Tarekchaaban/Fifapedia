@@ -42,7 +42,7 @@ Try the application live here: TBA
 - Users can sign out
 
 ## :books: Stretch Features
-- Users can lookup league standings.
+- Users can look up league standings.
 - Users can view betting odds and predictions on fixtures.
 
 ## :eyes: Preview
@@ -57,7 +57,7 @@ https://user-images.githubusercontent.com/113570457/215300799-e4b19e12-cfc6-486d
 
 
 ## :notebook: Features in Development
-- Users can lookup league standings.
+- Users can look up league standings.
 
 ## :man_technologist: Development
 
