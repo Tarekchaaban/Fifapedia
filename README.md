@@ -42,7 +42,7 @@ Try the application live here: TBA
 - Users can sig out
 
 ## :books: Stretch Features
-- Users lookup league standings
+- Users can lookup league standings.
 - Users can view betting odds and predictions on fixtures.
 
 ## :eyes: Preview
@@ -51,14 +51,15 @@ Try the application live here: TBA
 https://user-images.githubusercontent.com/113570457/215300321-96fef710-1236-488d-a6c9-d55106e08068.mp4
 
 
-### Users study a folder of flashcards
-![Studying flashcards](/read-me-gifs/study-feature.gif "Studying flashcards")
+### Users can search for players by season.
 
-### Users can follow a tour on their first sign in
-![Tour](/read-me-gifs/tour-feature.gif "Touring the StudyBuddy")
+
+https://user-images.githubusercontent.com/113570457/215300799-e4b19e12-cfc6-486d-8a10-12a8e2aa8654.mp4
+
+
 
 ## :notebook: Features in Development
-- Users can retake the tour
+- Users can lookup league standings.
 
 ## :man_technologist: Development
 
@@ -66,7 +67,7 @@ https://user-images.githubusercontent.com/113570457/215300321-96fef710-1236-488d
 
 1. Clone the repository
 ```
-git clone https://github.com/brandon-moy/study-buddy.git
+git clone https://github.com/brandon-moy/fifapedia.git
 ```
 2. Install dependencies with Node Package Manager
 ```
