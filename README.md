@@ -48,9 +48,6 @@ Try the application live here: TBA
 ## :eyes: Preview
 
 ### User can create add team to a team list.
-![Add Team to List](/add-team-to-list.gif "Adding a team to your list")
-
-
 https://user-images.githubusercontent.com/113570457/215300321-96fef710-1236-488d-a6c9-d55106e08068.mp4
 
 
