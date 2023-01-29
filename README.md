@@ -4,7 +4,7 @@ A full-stack web application for soccer enthusiasts to keep track of their favor
 
 ## :thinking: Why I built this
 
-Leading up to the weeks of initial brainstorming for this project, I found myself rather worried about what I would do and how to even get started. I knew that in order for me to give it my 100% and be engaged throughout the development of the entire app, it would need to be something that I truly care for and want to build. That led me to none other than my sole love and passion, soccer. Thinking back to the days where I had more free time to watch soccer and play video games like FIFA, I realized that I never came across an app that combined the stastics from teams & players, across all teams regardless of international or club status - so I decided that I would create one of my own and thus Fifapedia was born!
+Leading up to the weeks of initial brainstorming for this project, I found myself rather worried about what I would do and how to even get started. I knew that in order for me to give it my 100% and be engaged throughout the development of the entire app, it would need to be something that I truly care for and want to build. That led me to none other than my sole love and passion, soccer. Thinking back to the days where I had more free time to watch soccer and play video games like FIFA, I realized that I never came across an app that combined the statistics from teams & players, across all teams regardless of international or club status - so I decided that I would create one of my own and thus Fifapedia was born!
 
 ### 🔗 Live Demo
 
