@@ -1,4 +1,4 @@
-# Fifapedia
+# ⚽ Fifapedia
 
 A full-stack web application for soccer enthusiasts to keep track of their favorite teams and player stats.
 
