@@ -576,8 +576,10 @@ season-select-input:focus {
 li {
   transform: scale(0.95);
   transition: transform 0.5s;
+  cursor: pointer;
 }
 
 li:hover {
   transform: scale(1);
+  cursor: pointer;
 }
