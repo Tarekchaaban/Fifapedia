@@ -87,7 +87,7 @@ export default class TeamList extends React.Component {
   createModal() {
     return (
       <div>
-        <div className="overlay" />
+        <div className="overlay2" />
         <div className="modal">
           <div className="row">
             <div className="column-full">
