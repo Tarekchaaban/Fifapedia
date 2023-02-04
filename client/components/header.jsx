@@ -9,6 +9,7 @@ export default class Header extends React.Component {
     this.handleTeamSearchLink = this.handleTeamSearchLink.bind(this);
     this.handleTeamWatchlistLink = this.handleTeamWatchlistLink.bind(this);
     this.handleSignOutLink = this.handleSignOutLink.bind(this);
+    this.goToSearch = this.goToSearch.bind(this);
     this.state = {
       isClicked: false
     };
@@ -42,6 +43,10 @@ export default class Header extends React.Component {
     });
   }
 
+  goToSearch(event) {
+    window.location.hash = '';
+  }
+
   createMenu() {
     return (
       <div>
@@ -67,7 +72,7 @@ export default class Header extends React.Component {
       return (
         <div className="blue-header row ai-center jc-space-between">
           <div className="col-75">
-            <h1 className="header-logo"><a href="#">Fifapedia</a></h1>
+            <h1 className="header-logo" onClick={this.goToSearch}>Fifapedia</h1>
             <img className="logo-pic" src="/images/soccer-goal.png" />
           </div>
         </div>
