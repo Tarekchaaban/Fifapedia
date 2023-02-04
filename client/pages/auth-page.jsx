@@ -18,7 +18,7 @@ export default class AuthPage extends React.Component {
     this.state = {
       username: '',
       password: '',
-      action: 'sign-up',
+      action: 'sign-in',
       error: null
     };
   }
