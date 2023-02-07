@@ -4,6 +4,7 @@
   color: white;
   margin-left: 0.5em;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .logo-pic {
@@ -109,7 +110,7 @@
 }
 
 .team-search-bar {
-  width: 80%;
+  width: 82%;
   padding: 12px;
   border-radius: 5px;
   border-color: silver;
@@ -375,7 +376,8 @@ img {
   width: 60%;
   border-radius: 5px;
   color: gray;
-  border-color: #015291;
+  border-color: silver;
+  border-style: solid;
   padding-top: 15px;
   font-size: 15px;
   text-align: center;
@@ -384,7 +386,8 @@ img {
 }
 
 .season-select-input:focus {
-  outline: 1.5px solid #015291;
+  outline: #015291;
+  border: 2px solid #015291;
 }
 
 .select-button {
@@ -498,7 +501,8 @@ season-select-input:focus {
 }
 
 .auth-input {
-  border: 2px solid #8e95a4;
+  border-color: #8e95a4;
+  border-style: solid;
   width: 100%;
   padding: 1em;
   border-radius: 7px;
@@ -509,7 +513,8 @@ season-select-input:focus {
 }
 
 .auth-input:focus {
-  outline: 2px solid #015291;
+  outline: #015291;
+  border-color: #015291;
 }
 
 .auth-input::placeholder {
