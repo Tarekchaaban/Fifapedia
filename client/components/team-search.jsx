@@ -8,12 +8,14 @@ export default class TeamSearch extends React.Component {
     this.handleTeamAdd = this.handleTeamAdd.bind(this);
     this.handleTeamDelete = this.handleTeamDelete.bind(this);
     this.handleSearchBack = this.handleSearchBack.bind(this);
+    this.createSpinner = this.createSpinner.bind(this);
     this.state = {
       teamsearch: '',
       view: '',
       currentTeam: {},
       currentUser: 1,
-      teamlist: []
+      teamlist: [],
+      fetchingData: true
     };
   }
 
@@ -68,12 +70,14 @@ export default class TeamSearch extends React.Component {
   handleSearchBack(event) {
     this.setState({
       view: '',
-      teamsearch: ''
+      teamsearch: '',
+      fetchingData: true
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ view: 'team search' });
     fetch(`/api/teamsearch/${this.state.teamsearch}`, {
       method: 'GET'
     })
@@ -82,8 +86,8 @@ export default class TeamSearch extends React.Component {
         if (data.results === 0) {
           window.location.hash = 'not-found';
         } else {
-          this.setState({ view: 'team search' });
           this.setState({ currentTeam: data.response[0] });
+          this.setState({ fetchingData: false });
         }
       })
       .catch(err => console.error('Fetch Failed!', err));
@@ -93,7 +97,24 @@ export default class TeamSearch extends React.Component {
     this.setState({ teamsearch: event.target.value });
   }
 
+  createSpinner() {
+    if (this.state.fetchingData === true) {
+      return (
+        <div className="row jc-center">
+          <div className="column-full row jc-center height-70 ai-center">
+            <div className="lds-dual-ring" />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div/>
+      );
+    }
+  }
+
   render() {
+    const spinner = this.createSpinner();
     if (this.state.view === '') {
       return (
         <div className="gray-background">
@@ -114,7 +135,13 @@ export default class TeamSearch extends React.Component {
           </form>
         </div>
       );
-    } else if (this.state.view === 'team search') {
+    } else if (this.state.view === 'team search' && this.state.fetchingData === true) {
+      return (
+        <div className="gray-background">
+          {spinner}
+        </div>
+      );
+    } else if (this.state.view === 'team search' && this.state.fetchingData === false) {
       return (
         <div className="gray-background">
           <div className="row jc-center wrapped ai-center">

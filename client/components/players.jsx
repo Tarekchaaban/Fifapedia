@@ -3,6 +3,7 @@ export default class Players extends React.Component {
   constructor(props) {
     super(props);
     this.createForm = this.createForm.bind(this);
+    this.createSpinner = this.createSpinner.bind(this);
     this.createPlayerList = this.createPlayerList.bind(this);
     this.handleSeasonChange = this.handleSeasonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -12,7 +13,8 @@ export default class Players extends React.Component {
       view: 'searching',
       players: [],
       season: null,
-      currentPlayerId: 0
+      currentPlayerId: 0,
+      loaded: false
     };
   }
 
@@ -22,6 +24,7 @@ export default class Players extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ loaded: false });
     fetch(`/api/players/${this.props.teamId}/${this.state.season}`, {
       method: 'GET'
     })
@@ -29,7 +32,8 @@ export default class Players extends React.Component {
       .then(data => {
         this.setState({
           view: 'searched',
-          players: data.response
+          players: data.response,
+          loaded: true
         });
       })
       .catch(err => console.error('Fetch Failed!', err));
@@ -40,6 +44,22 @@ export default class Players extends React.Component {
       currentPlayerId: playerId,
       view: 'single player'
     });
+  }
+
+  createSpinner() {
+    if (this.state.loaded === false) {
+      return (
+        <div className="row jc-center">
+          <div className="column-full row jc-center height-70 ai-center">
+            <div className="lds-dual-ring" />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div />
+      );
+    }
   }
 
   createPlayerList() {
@@ -81,7 +101,6 @@ export default class Players extends React.Component {
   createForm() {
     return (
       <form className="season-select-form" onSubmit={this.handleSubmit}>
-        <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeamList}/>
         <div className="text-align-center">
           <h1 className="team-header">{this.props.teamName}</h1>
         </div>
@@ -89,6 +108,7 @@ export default class Players extends React.Component {
           <div className="col-75">
             <div className="row jc-center">
               <div className="col-75 text-align-center team-blue-background as-center">
+                <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeamList} />
                 <img className="season-team-logo" src={this.props.teamLogo} />
               </div>
             </div>
@@ -129,13 +149,21 @@ export default class Players extends React.Component {
   render() {
     const playerlist = this.createPlayerList();
     const form = this.createForm();
+    const spinner = this.createSpinner();
     if (this.state.view === 'searching') {
       return (
         <div>
           {form}
         </div>
       );
-    } else if (this.state.view === 'searched') {
+    } else if (this.state.view === 'searched' && this.state.loaded === false) {
+      return (
+        <div>
+          {form}
+          {spinner}
+        </div>
+      );
+    } else if (this.state.view === 'searched' && this.state.loaded === true) {
       return (
         <div>
           {form}
