@@ -11,6 +11,7 @@ export default class TeamList extends React.Component {
     this.handleTeamDelete = this.handleTeamDelete.bind(this);
     this.handleTeamClick = this.handleTeamClick.bind(this);
     this.createTeamList = this.createTeamList.bind(this);
+    this.createSpinner = this.createSpinner.bind(this);
     this.state = {
       isDeleting: false,
       currentEntryId: 0,
@@ -18,7 +19,8 @@ export default class TeamList extends React.Component {
       currentTeamId: 0,
       currentTeamLogo: '',
       currentTeamName: '',
-      teamlist: []
+      teamlist: [],
+      fetchingData: true
     };
   }
 
@@ -32,7 +34,10 @@ export default class TeamList extends React.Component {
     };
     fetch('/api/teams/', req)
       .then(response => response.json())
-      .then(data => this.setState({ teamlist: data }))
+      .then(data => this.setState({
+        teamlist: data,
+        fetchingData: false
+      }))
       .catch(err => console.error('Fetch Failed!', err));
   }
 
@@ -142,10 +147,34 @@ export default class TeamList extends React.Component {
     );
   }
 
+  createSpinner() {
+    if (this.state.fetchingData === true) {
+      return (
+        <div className="row jc-center">
+          <div className="column-full row jc-center height-70 ai-center">
+            <div className="lds-dual-ring" />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div />
+      );
+    }
+  }
+
   render() {
     const teamlist = this.createTeamList();
     const modal = this.createModal();
-    if (this.state.view === 'team list' && this.state.isDeleting === false) {
+    const spinner = this.createSpinner();
+    if (this.state.view === 'team list' && this.state.fetchingData === true) {
+      return (
+        <div>
+          {spinner}
+        </div>
+      );
+    }
+    if (this.state.view === 'team list' && this.state.isDeleting === false && this.state.fetchingData === false) {
       return (
         <div>
           {teamlist}
