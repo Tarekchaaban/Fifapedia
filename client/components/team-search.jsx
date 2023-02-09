@@ -119,7 +119,7 @@ export default class TeamSearch extends React.Component {
       return (
         <div className="gray-background">
           <form className="team-search-form" onSubmit={this.handleSubmit}>
-            <div className="row">
+            <div className="row jc-center">
               <div className="col-100 row height-70 ai-center jc-center relative">
                 <input autoFocus name="teamsearch" value={this.state.teamsearch} type="text" className="team-search-bar" id="team-search-input" placeholder="Search for team (e.g. 'Real Madrid')" onChange={this.handleTeamSearchChange} required />
                 <button type="submit" className="team-search-button">

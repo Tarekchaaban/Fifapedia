@@ -51,7 +51,7 @@
 }
 
 .col-60 {
-  flex-basis: 60%;
+  flex-basis: 55%;
 }
 
 .col-30 {
@@ -110,7 +110,7 @@
 }
 
 .team-search-bar {
-  width: 83%;
+  width: 80%;
   padding: 12px;
   border-radius: 5px;
   border-color: silver;
@@ -133,9 +133,6 @@
 }
 
 .fa-magnifying-glass {
-  position: absolute;
-  top: 49%;
-  right: 12%;
   color: #015291;
 }
 
@@ -146,7 +143,10 @@
 
 .team-search-button {
   border: none;
-  background-color: #f7f7f7;
+  background-color: white;
+  position: absolute;
+  top: 48.8%;
+  right: 11%;
 }
 
 .fifa-logo {
@@ -268,9 +268,9 @@ img {
 
 .modal {
   position: fixed;
-  top: 50%;
+  top: -200%;
   left: 50%;
-  transform: translate(-50%, -170%);
+  transform: translate(-50%, -50%);
   background-color: #015291;
   border-radius: 5px;
   z-index: 1;
@@ -280,6 +280,17 @@ img {
   padding-right: 10px;
   box-shadow: 0 4px 2px -2px black;
   border: 1px solid white;
+  animation: slide-in 0.35s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    top: -200%;
+  }
+
+  to {
+    top: 30%;
+  }
 }
 
 .column-full {
@@ -408,7 +419,8 @@ img {
 
 .season-team-logo {
   width: 60%;
-  max-height: 430px;
+  max-height: 420px;
+  object-fit: contain;
 }
 
 .player-list-text {
@@ -418,6 +430,7 @@ img {
 
 .player-list-photo {
   max-width: 70%;
+  object-fit: contain;
 }
 
 .player-card-blue-background {
@@ -427,10 +440,10 @@ img {
 }
 
 .single-player-image {
-  width: 75%;
+  width: 100%;
   padding-top: 1em;
   padding-bottom: 1em;
-  max-height: 500px;
+  max-height: 350px;
   object-fit: contain;
 }
 
@@ -611,6 +624,14 @@ li:hover {
   width: 80px;
   height: 80px;
   color: #015291;
+}
+
+.xmark3 {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  color: white;
+  font-size: 20px;
 }
 
 .lds-dual-ring::after {
