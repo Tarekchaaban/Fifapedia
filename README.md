@@ -8,7 +8,7 @@ Leading up to the weeks of initial brainstorming for this project, I found mysel
 
 ### 🔗 Live Demo
 
-Try the application live here: TBA
+Try the application live here: fifapedia.fifapedia.app
 
 ## 💻 Technologies Used
 
