@@ -24,7 +24,10 @@ export default class Players extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ loaded: false });
+    this.setState({
+      loaded: false,
+      view: 'searched'
+    });
     fetch(`/api/players/${this.props.teamId}/${this.state.season}`, {
       method: 'GET'
     })

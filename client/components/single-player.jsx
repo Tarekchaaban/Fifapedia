@@ -61,7 +61,7 @@ export default class SinglePlayer extends React.Component {
             <div className="col-100">
               <div className="row jc-center wrapped">
                 <div className="col-60 player-card-blue-background row jc-center">
-                  <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeam} />
+                  <i className="fa-solid fa-rectangle-xmark xmark3" onClick={this.goBackToTeam} />
                   <img className="single-player-image" src={this.state.clickedPlayer.player.photo} />
                 </div>
                 <div className="col-60 player-card-blue-background">
