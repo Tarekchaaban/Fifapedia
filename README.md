@@ -52,7 +52,7 @@ https://user-images.githubusercontent.com/113570457/215300321-96fef710-1236-488d
 
 
 ### Users can search for players by season.
-https://www.loom.com/share/2dee2973a73843c586e3fc4b4b16d5de
+https://user-images.githubusercontent.com/113570457/215300799-e4b19e12-cfc6-486d-8a10-12a8e2aa8654.mp4
 
 
 ## :notebook: Features in Development
