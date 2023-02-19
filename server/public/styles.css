@@ -51,7 +51,7 @@
 }
 
 .col-60 {
-  flex-basis: 55%;
+  flex-basis: 60%;
 }
 
 .col-30 {
@@ -440,7 +440,7 @@ img {
 }
 
 .single-player-image {
-  width: 100%;
+  width: 75%;
   padding-top: 1em;
   padding-bottom: 1em;
   max-height: 350px;
@@ -628,8 +628,8 @@ li:hover {
 
 .xmark3 {
   position: absolute;
-  top: 1%;
-  right: 1%;
+  top: 0%;
+  right: 0.5%;
   color: white;
   font-size: 20px;
 }
