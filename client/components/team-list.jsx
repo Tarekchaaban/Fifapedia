@@ -101,7 +101,7 @@ export default class TeamList extends React.Component {
           </div>
           <div className="row jc-center ai-center">
             <div className="column-full">
-              <div className="row">
+              <div className="row space-between">
                 <div className="col-50 text-align-center">
                   <button className="no-button" onClick={this.handleCancelClick}>Cancel</button>
                 </div>
@@ -127,7 +127,7 @@ export default class TeamList extends React.Component {
                 <li className="col-100-50" key={team.entryId} id={team.teamId}>
                   <div className="list-blue-background relative box-shadow">
                     <button className="x-mark-button">
-                      <i className="fa-solid fa-xmark" onClick={e => this.handleXClick(e, team.entryId)} />
+                      <i className="fa-regular fa-trash-can" onClick={e => this.handleXClick(e, team.entryId)} />
                     </button>
                     <div className="row jc-center" onClick={e => this.handleTeamClick(e, team.teamId, team.teamName, team.crestUrl)}>
                       <div className="column-one-sixth">
