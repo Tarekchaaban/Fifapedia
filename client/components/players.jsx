@@ -69,7 +69,8 @@ export default class Players extends React.Component {
     return (
       <div>
         <h1 className="team-list-header">Players</h1>
-        <ul className="list-group shadow-sm row wrapped">
+        <hr />
+        <ul className="list-group shadow-sm row wrapped box-shadow2">
           {
             this.state.players.map(player => {
               return (
@@ -92,6 +93,7 @@ export default class Players extends React.Component {
             })
           }
         </ul>
+        <br />
       </div>
     );
   }
@@ -103,49 +105,53 @@ export default class Players extends React.Component {
 
   createForm() {
     return (
-      <form className="season-select-form" onSubmit={this.handleSubmit}>
-        <div className="text-align-center">
-          <h1 className="team-header">{this.props.teamName}</h1>
-        </div>
-        <div className="row wrapped jc-center">
-          <div className="col-75">
-            <div className="row jc-center">
-              <div className="col-75 text-align-center team-blue-background as-center">
-                <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeamList} />
-                <img className="season-team-logo" src={this.props.teamLogo} />
+      <div className="list-group box-shadow2 black-border">
+        <form className="season-select-form" onSubmit={this.handleSubmit}>
+          <div className="text-align-center">
+            <h1 className="team-header">{this.props.teamName}</h1>
+            <hr />
+          </div>
+          <div className="row wrapped jc-center">
+            <div className="col-75">
+              <div className="row jc-center">
+                <div className="col-75 text-align-center team-blue-background as-center box-shadow">
+                  <i className="fa-regular fa-circle-xmark xmark2" onClick={this.goBackToTeamList} />
+                  <img className="season-team-logo" src={this.props.teamLogo} />
+                </div>
               </div>
             </div>
+            <div className="col-75 text-align-center as-center">
+              <select className="season-select-input" placeholder="Season Year" onChange={this.handleSeasonChange}>
+                <option value="" selected disabled>Select Season</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+              </select>
+              <button type="submit" className="select-button">
+                <i className="fa-solid fa-square-check" />
+              </button>
+            </div>
           </div>
-          <div className="col-75 text-align-center as-center">
-            <select className="season-select-input" placeholder="Season Year" onChange={this.handleSeasonChange}>
-              <option value="" selected disabled>Choose Season Year</option>
-              <option value="2022">2022</option>
-              <option value="2021">2021</option>
-              <option value="2020">2020</option>
-              <option value="2019">2019</option>
-              <option value="2018">2018</option>
-              <option value="2017">2017</option>
-              <option value="2016">2016</option>
-              <option value="2015">2015</option>
-              <option value="2014">2014</option>
-              <option value="2013">2013</option>
-              <option value="2012">2012</option>
-              <option value="2011">2011</option>
-              <option value="2010">2010</option>
-              <option value="2009">2009</option>
-              <option value="2008">2008</option>
-              <option value="2007">2007</option>
-              <option value="2006">2006</option>
-              <option value="2005">2005</option>
-              <option value="2004">2004</option>
-              <option value="2003">2003</option>
-            </select>
-            <button type="submit" className="select-button">
-              <i className="fa-solid fa-square-check" />
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+        <br />
+      </div>
     );
   }
 

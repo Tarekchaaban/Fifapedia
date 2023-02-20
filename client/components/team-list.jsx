@@ -120,7 +120,8 @@ export default class TeamList extends React.Component {
     return (
       <div>
         <h1 className="team-list-header">Teams</h1>
-        <ul className="list-group shadow-sm row wrapped">
+        <hr />
+        <ul className="list-group shadow-sm row wrapped box-shadow">
           {
             this.state.teamlist.map(team => {
               return (
@@ -143,6 +144,7 @@ export default class TeamList extends React.Component {
             })
           }
         </ul>
+        <br />
       </div>
     );
   }
