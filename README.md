@@ -48,7 +48,8 @@ Try the application live here: [fifapedia.fifapedia.app](https://fifapedia.fifap
 ## :eyes: Preview
 
 ### User can add team to a team list.
-https://user-images.githubusercontent.com/113570457/215300321-96fef710-1236-488d-a6c9-d55106e08068.mp4
+https://user-images.githubusercontent.com/113570457/220092098-c08102a0-fa22-4bb7-8dca-c80f42546988.mp4
+
 
 
 ### Users can search for players by season.
