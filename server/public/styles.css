@@ -51,7 +51,7 @@
 }
 
 .col-60 {
-  flex-basis: 60%;
+  flex-basis: 70%;
 }
 
 .col-30 {
@@ -215,6 +215,10 @@ i {
 
 .list-group {
   list-style: none;
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
 ul {
@@ -241,6 +245,7 @@ ul {
   border-radius: 10px;
   margin: 0.5em;
   min-height: 90%;
+  border: 2px solid #f7f7f7;
 }
 
 .team-list-name {
@@ -394,8 +399,6 @@ img {
 
 .team-header {
   color: #015291;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px black;
   margin-bottom: 5px;
 }
 
@@ -405,6 +408,7 @@ img {
   border-radius: 12px;
   padding: 2em 0;
   position: relative;
+  border: 2px solid #f7f7f7;
 }
 
 .season-select-input {
@@ -427,7 +431,7 @@ img {
 
 .select-button {
   visibility: none;
-  background-color: #f7f7f7;
+  background-color: white;
   border: none;
 }
 
@@ -452,14 +456,16 @@ img {
 }
 
 .player-list-photo {
-  max-width: 70%;
-  object-fit: contain;
+  max-width: 90%;
+  object-fit: fill;
+  border-radius: 10px;
 }
 
 .player-card-blue-background {
   background-color: #015291;
   margin-top: 1em;
   position: relative;
+  border: 2px solid #f7f7f7;
 }
 
 .single-player-image {
@@ -491,6 +497,10 @@ img {
 
 .max-height {
   max-height: 300px;
+}
+
+.max-height2 {
+  height: 100vh;
 }
 
 h1 > a {
@@ -592,7 +602,11 @@ season-select-input:focus {
 }
 
 .box-shadow {
-  box-shadow: 0 4px 2px -2px gray;
+  box-shadow: 0 2px 6px black;
+}
+
+.box-shadow2 {
+  box-shadow: 0 2px 6px gray;
 }
 
 .input-error-message {
@@ -653,7 +667,7 @@ li:hover {
 .xmark3 {
   position: absolute;
   top: 0%;
-  right: 0.5%;
+  right: 1%;
   color: white;
   font-size: 20px;
 }
@@ -679,4 +693,17 @@ li:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.margin-bottom {
+  margin-bottom: 5px;
+}
+
+.border-radius {
+  border-radius: 5px;
+}
+
+.black-border {
+  border: 2px solid silver;
+  margin-top: 5px;
 }

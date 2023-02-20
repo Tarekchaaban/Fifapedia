@@ -57,19 +57,20 @@ export default class SinglePlayer extends React.Component {
       return (
         <div>
           <h1 className="team-list-header">Stats: {this.props.season}</h1>
-          <div className="row max-height">
+          <hr />
+          <div className="row">
             <div className="col-100">
-              <div className="row jc-center wrapped">
-                <div className="col-60 player-card-blue-background row jc-center">
+              <div className="row jc-center wrapped list-group box-shadow">
+                <div className="col-60 player-card-blue-background row jc-center box-shadow2 border-radius">
                   <i className="fa-solid fa-rectangle-xmark xmark3" onClick={this.goBackToTeam} />
                   <img className="single-player-image" src={this.state.clickedPlayer.player.photo} />
                 </div>
-                <div className="col-60 player-card-blue-background">
+                <div className="col-60 player-card-blue-background box-shadow2 margin-bottom border-radius">
                   <div className="row jc-center wrapped">
-                    <div className="col-75 white-outline text-align-center">
+                    <div className="col-75 white-outline text-align-center border-radius">
                       <h2 className="single-player-name">{this.state.clickedPlayer.player.name}</h2>
                     </div>
-                    <div className="col-75 white-outline line-height">
+                    <div className="col-75 white-outline line-height border-radius">
                       <p className="player-stats">Position: <b>{this.state.clickedPlayer.statistics[0].games.position}</b></p>
                       <p className="player-stats">Age: <b>{this.state.clickedPlayer.player.age}</b></p>
                       <p className="player-stats">Nationality: <b>{this.state.clickedPlayer.player.nationality}</b></p>
@@ -91,6 +92,7 @@ export default class SinglePlayer extends React.Component {
               </div>
             </div>
           </div>
+          <br />
         </div>
       );
     }
