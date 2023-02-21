@@ -242,7 +242,7 @@ ul {
 }
 
 .column-one-sixth {
-  flex-basis: 33%;
+  flex-basis: 34%;
   align-self: center;
 }
 
@@ -255,7 +255,7 @@ ul {
   background-color: #015291;
   border-radius: 10px;
   margin: 0.5em;
-  min-height: 90%;
+  max-height: 88.5%;
   border: 2px solid #f7f7f7;
 }
 
