@@ -105,7 +105,7 @@ export default class Players extends React.Component {
 
   createForm() {
     return (
-      <div className="list-group box-shadow2 black-border">
+      <div className="list-group2 box-shadow2 silver-border">
         <form className="season-select-form" onSubmit={this.handleSubmit}>
           <div className="text-align-center">
             <h1 className="team-header">{this.props.teamName}</h1>
