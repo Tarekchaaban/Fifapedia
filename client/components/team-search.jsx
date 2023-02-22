@@ -1,5 +1,8 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+
 export default class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +18,8 @@ export default class TeamSearch extends React.Component {
       currentTeam: {},
       currentUser: 1,
       teamlist: [],
-      fetchingData: true
+      fetchingData: true,
+      options: []
     };
   }
 
@@ -93,8 +97,17 @@ export default class TeamSearch extends React.Component {
       .catch(err => console.error('Fetch Failed!', err));
   }
 
-  handleTeamSearchChange(event) {
-    this.setState({ teamsearch: event.target.value });
+  handleTeamSearchChange(inputValue) {
+    this.setState({ teamsearch: inputValue });
+    fetch(`/api/teamsearch/${inputValue}`, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        const teams = data.response.map(team => team.team.name);
+        this.setState({ options: teams });
+      })
+      .catch(err => console.error('Fetch Failed!', err));
   }
 
   createSpinner() {
@@ -120,11 +133,12 @@ export default class TeamSearch extends React.Component {
         <div className="gray-background">
           <form className="team-search-form" onSubmit={this.handleSubmit}>
             <div className="row jc-center">
-              <div className="col-100 row height-70 ai-center jc-center relative">
-                <input autoFocus name="teamsearch" value={this.state.teamsearch} type="text" className="team-search-bar" id="team-search-input" placeholder="Search for team... (e.g. 'Real Madrid')" onChange={this.handleTeamSearchChange} required />
-                <button type="submit" className="team-search-button">
-                  <i className="fa-solid fa-magnifying-glass" />
-                </button>
+              <div className="col-100 row height-70 ai-center jc-center">
+                <Typeahead autoFocus options={this.state.options} maxResults={8} minLength={3} name="teamsearch" type="text" className="team-search-bar relative" id="team-search-input" placeholder="Search for team..." onInputChange={this.handleTeamSearchChange} onChange={this.handleTeamSearchChange} required>
+                  <button type="submit" className="team-search-button">
+                    <i className="fa-solid fa-magnifying-glass" />
+                  </button>
+                </Typeahead>
               </div>
             </div>
             <div className="row height-30">
