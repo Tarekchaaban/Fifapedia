@@ -133,7 +133,7 @@ export default class AuthPage extends React.Component {
       return (
         <>
           <button className="auth-button" type="submit">Sign Up</button>
-          <button onClick={this.demoAccountAutoFill} className="auth-button" type="none">Demo Account Auto-Fill</button>
+          <button onClick={this.demoAccountAutoFill} className="auth-button">Demo Account Auto-Fill</button>
           <p className="auth-question">Already have an account? <span onClick={this.switchToSignIn} className="blue">Sign In</span></p>
         </>
       );
