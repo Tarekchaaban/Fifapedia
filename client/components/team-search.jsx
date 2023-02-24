@@ -1,5 +1,6 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
+import debounce from 'lodash/debounce';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 
@@ -7,7 +8,7 @@ export default class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTeamSearchChange = this.handleTeamSearchChange.bind(this);
+    this.handleTeamSearchChange = debounce(this.handleTeamSearchChange.bind(this), 500);
     this.handleTeamAdd = this.handleTeamAdd.bind(this);
     this.handleTeamDelete = this.handleTeamDelete.bind(this);
     this.handleSearchBack = this.handleSearchBack.bind(this);
@@ -100,7 +101,11 @@ export default class TeamSearch extends React.Component {
   handleTeamSearchChange(inputValue) {
     this.setState({ teamsearch: inputValue });
     fetch(`/api/teamsearch/${inputValue}`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        'x-access-token': localStorage.getItem('fifa-jwt')
+      },
+      user: this.context.user
     })
       .then(response => response.json())
       .then(data => {
@@ -134,7 +139,7 @@ export default class TeamSearch extends React.Component {
           <form className="team-search-form" onSubmit={this.handleSubmit}>
             <div className="row jc-center">
               <div className="col-100 row height-70 ai-center jc-center">
-                <Typeahead autoFocus options={this.state.options} maxResults={8} minLength={3} name="teamsearch" type="text" className="team-search-bar relative" id="team-search-input" placeholder="Search for team..." onInputChange={this.handleTeamSearchChange} onChange={this.handleTeamSearchChange} required>
+                <Typeahead autoFocus options={this.state.options} maxResults={8} minLength={3} name="teamsearch" type="text" className="team-search-bar relative" id="team-search-input" placeholder="Search for team..." onInputChange={this.handleTeamSearchChange} required>
                   <button type="submit" className="team-search-button">
                     <i className="fa-solid fa-magnifying-glass" />
                   </button>
