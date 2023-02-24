@@ -132,7 +132,7 @@ export default class AuthPage extends React.Component {
     if (this.state.action === 'sign-up') {
       return (
         <>
-          <button className="auth-button" type="submit">Sign Up</button>
+          <button className="auth-button" type="submit"><b>Sign Up</b></button>
           <button onClick={this.demoAccountAutoFill} className="auth-button"><b>Demo Account Auto-Fill</b></button>
           <p className="auth-question">Already have an account? <span onClick={this.switchToSignIn} className="blue">Sign In</span></p>
         </>
@@ -140,7 +140,7 @@ export default class AuthPage extends React.Component {
     } else {
       return (
         <>
-          <button className="auth-button" type="submit">Sign in</button>
+          <button className="auth-button" type="submit"><b>Sign in</b></button>
           <p className="auth-question">Dont have an account? <span onClick={this.switchToSignUp} className="blue">Sign Up</span></p>
         </>
       );
