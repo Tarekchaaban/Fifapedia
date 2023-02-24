@@ -8,7 +8,7 @@ export default class TeamSearch extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTeamSearchChange = debounce(this.handleTeamSearchChange.bind(this), 500);
+    this.handleTeamSearchChange = debounce(this.handleTeamSearchChange.bind(this), 300);
     this.handleTeamAdd = this.handleTeamAdd.bind(this);
     this.handleTeamDelete = this.handleTeamDelete.bind(this);
     this.handleSearchBack = this.handleSearchBack.bind(this);
