@@ -174,8 +174,7 @@ input[type="password"] {
   background-color: white;
   position: absolute;
   top: 34%;
-  right: 22px;
-  width: 0%;
+  right: 9px;
   z-index: 1;
 }
 

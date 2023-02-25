@@ -81,21 +81,25 @@ export default class TeamSearch extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    this.setState({ view: 'team search' });
-    fetch(`/api/teamsearch/${this.state.teamsearch}`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.results === 0) {
-          window.location.hash = 'not-found';
-        } else {
-          this.setState({ currentTeam: data.response[0] });
-          this.setState({ fetchingData: false });
-        }
+    if (this.state.teamsearch.length > 1) {
+      event.preventDefault();
+      this.setState({ view: 'team search' });
+      fetch(`/api/teamsearch/${this.state.teamsearch}`, {
+        method: 'GET'
       })
-      .catch(err => console.error('Fetch Failed!', err));
+        .then(response => response.json())
+        .then(data => {
+          if (data.results === 0) {
+            window.location.hash = 'not-found';
+          } else {
+            this.setState({ currentTeam: data.response[0] });
+            this.setState({ fetchingData: false });
+          }
+        })
+        .catch(err => console.error('Fetch Failed!', err));
+    } else {
+      window.location.hash = '#not-found';
+    }
   }
 
   handleTeamSearchChange(inputValue) {
