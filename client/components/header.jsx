@@ -50,7 +50,7 @@ export default class Header extends React.Component {
   createMenu() {
     return (
       <div>
-        <div className={`overlay ${this.state.isClicked ? 'visible' : 'hidden'}`}>
+        <div className={`overlay ${this.state.isClicked ? 'visible' : ''}`}>
           <div className="row">
             <div className={`col-40 ${this.state.isClicked ? 'open' : ''}`}>
               <div className="blue-menu-header">
