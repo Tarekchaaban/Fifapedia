@@ -329,6 +329,23 @@ img {
   animation: slide-in 0.35s forwards;
 }
 
+.modal2 {
+  position: fixed;
+  top: -200%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #015291;
+  border-radius: 5px;
+  z-index: 1;
+  height: 175px;
+  width: 300px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0 4px 2px -2px black;
+  border: 1px solid white;
+  animation: slide-out 0.75s ease-in-out;
+}
+
 @keyframes slide-in {
   from {
     top: -200%;
@@ -336,6 +353,16 @@ img {
 
   to {
     top: 30%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    top: 30%;
+  }
+
+  to {
+    top: -200%;
   }
 }
 
@@ -673,6 +700,17 @@ li:hover {
   left: 0;
   background-color: rgb(0 0 0 / 60%);
   z-index: 1;
+}
+
+.overlay3 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 60%);
+  z-index: 1;
+  display: none;
 }
 
 .space-between {
