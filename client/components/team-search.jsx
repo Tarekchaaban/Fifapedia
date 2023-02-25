@@ -139,7 +139,7 @@ export default class TeamSearch extends React.Component {
           <form className="team-search-form" onSubmit={this.handleSubmit}>
             <div className="row jc-center">
               <div className="col-100 row height-70 ai-center jc-center">
-                <Typeahead autoFocus options={this.state.options} maxResults={8} minLength={3} name="teamsearch" type="text" className="team-search-bar relative" id="team-search-input" placeholder="Search for team..." onInputChange={this.handleTeamSearchChange} required>
+                <Typeahead autoFocus inputProps={{ style: { color: '#015291' } }} options={this.state.options} maxResults={8} minLength={3} name="teamsearch" type="text" className="team-search-bar relative" id="team-search-input" placeholder="Search for team..." onInputChange={this.handleTeamSearchChange} required>
                   <button type="submit" className="team-search-button">
                     <i className="fa-solid fa-magnifying-glass" />
                   </button>
