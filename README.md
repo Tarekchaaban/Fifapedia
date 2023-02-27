@@ -19,9 +19,9 @@ Try the application live here: [fifapedia.fifapedia.app](https://fifapedia.fifap
 - SQL
 - React (Framework)
 - JSX
+- Node.js
 
 ### Packages
-- Node.js
 - Express.js
 - Babel
 - Webpack
