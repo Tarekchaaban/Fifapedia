@@ -56,7 +56,8 @@ https://user-images.githubusercontent.com/113570457/221845024-e245a310-834c-4694
 
 
 ### Users can search for players by season.
-https://user-images.githubusercontent.com/113570457/220095468-0c3a3799-7785-4a1a-aff0-33193f76cedc.mp4
+https://user-images.githubusercontent.com/113570457/221846630-23e035c7-df93-422e-8a12-2aa131a281f2.mp4
+
 
 
 ## :notebook: Features in Development
