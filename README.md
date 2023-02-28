@@ -17,12 +17,14 @@ Try the application live here: [fifapedia.fifapedia.app](https://fifapedia.fifap
 - CSS3
 - JavaScript (ES6)
 - SQL
-- React (Framework)
 - JSX
-- Node.js
+
+### Frameworks
+- Node.js 
+- React 
+- Express.js 
 
 ### Packages
-- Express.js
 - Babel
 - Webpack
 - Argon2
