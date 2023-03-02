@@ -67,8 +67,7 @@ export default class TeamList extends React.Component {
 
   handleCancelClick(event) {
     this.setState({
-      isDeleting: false,
-      modalOpened: true
+      isDeleting: false
     });
   }
 
@@ -80,7 +79,6 @@ export default class TeamList extends React.Component {
       .then(data => {
         this.handleTeamDelete();
         this.setState({ isDeleting: false });
-        this.setState({ modalOpened: true });
       })
       .catch(err => console.error('Delete failed!', err));
 
@@ -96,57 +94,30 @@ export default class TeamList extends React.Component {
   }
 
   createModal() {
-    if (this.state.isDeleting) {
-      return (
-        <div>
-          <div className="overlay2" />
-          <div className="modal">
-            <div className="row">
-              <div className="column-full">
-                <h2 className="modal-text-format">Are you sure you want to delete this team?</h2>
-              </div>
+    return (
+      <div>
+        <div className={`${this.state.isDeleting ? 'overlay2' : 'overlay-hide'}`} />
+        <div className={`${this.state.isDeleting ? 'modal' : 'modal-hide'}`}>
+          <div className="row">
+            <div className="column-full">
+              <h2 className="modal-text-format">Are you sure you want to delete this team?</h2>
             </div>
-            <div className="row jc-center ai-center">
-              <div className="column-full">
-                <div className="row space-between">
-                  <div className="col-50 text-align-center">
-                    <button className="no-button" onClick={this.handleCancelClick}>Cancel</button>
-                  </div>
-                  <div className="col-50 text-align-center">
-                    <button className="yes-button" onClick={this.handleConfirmClick}>Confirm</button>
-                  </div>
+          </div>
+          <div className="row jc-center ai-center">
+            <div className="column-full">
+              <div className="row space-between">
+                <div className="col-50 text-align-center">
+                  <button className="no-button" onClick={this.handleCancelClick}>Cancel</button>
+                </div>
+                <div className="col-50 text-align-center">
+                  <button className="yes-button" onClick={this.handleConfirmClick}>Confirm</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <div className="overlay3" />
-          <div className="modal2">
-            <div className="row">
-              <div className="column-full">
-                <h2 className="modal-text-format">Are you sure you want to delete this team?</h2>
-              </div>
-            </div>
-            <div className="row jc-center ai-center">
-              <div className="column-full">
-                <div className="row space-between">
-                  <div className="col-50 text-align-center">
-                    <button className="no-button" onClick={this.handleCancelClick}>Cancel</button>
-                  </div>
-                  <div className="col-50 text-align-center">
-                    <button className="yes-button" onClick={this.handleConfirmClick}>Confirm</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 
   createTeamList() {
@@ -214,14 +185,7 @@ export default class TeamList extends React.Component {
           {teamlist}
         </div>
       );
-    } else if (this.state.view === 'team list' && this.state.isDeleting === false && this.state.fetchingData === false) {
-      return (
-        <div>
-          {modal}
-          {teamlist}
-        </div>
-      );
-    } else if (this.state.view === 'team list' && this.state.isDeleting === true) {
+    } else if (this.state.view === 'team list' && this.state.modalOpened === true) {
       return (
         <div>
           {modal}
