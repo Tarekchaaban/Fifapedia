@@ -329,7 +329,7 @@ img {
   animation: slide-in 0.35s forwards;
 }
 
-.modal2 {
+.modal-hide {
   position: fixed;
   top: -200%;
   left: 50%;
@@ -702,7 +702,7 @@ li:hover {
   z-index: 1;
 }
 
-.overlay3 {
+.overlay-hide {
   position: fixed;
   top: 0;
   right: 0;
