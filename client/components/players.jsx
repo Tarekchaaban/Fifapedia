@@ -9,6 +9,7 @@ export default class Players extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBackToTeamList = this.goBackToTeamList.bind(this);
     this.handlePlayerClick = this.handlePlayerClick.bind(this);
+    this.handleScrollDown = this.handleScrollDown.bind(this);
     this.state = {
       view: 'searching',
       players: [],
@@ -49,6 +50,14 @@ export default class Players extends React.Component {
     });
   }
 
+  handleScrollDown(event) {
+    window.scrollTo({
+      top: 475,
+      left: 475,
+      behavior: 'smooth'
+    });
+  }
+
   createSpinner() {
     if (this.state.loaded === false) {
       return (
@@ -78,7 +87,7 @@ export default class Players extends React.Component {
                   <div className="list-blue-background relative box-shadow" >
                     <div className="row jc-center">
                       <div className="column-one-sixth">
-                        <img className="player-list-photo" src={player.player.photo} alt='player picture' />
+                        <img className="player-list-photo" src={player.player.photo} alt='player picture' onLoad={this.handleScrollDown}/>
                       </div>
                       <div className="column-two-thirds">
                         <p className="player-list-text">Name: <b>{player.player.name}</b></p>
