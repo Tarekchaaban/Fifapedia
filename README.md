@@ -1,6 +1,6 @@
 # ⚽ Fifapedia
 
-A PERN-stack web application for soccer enthusiasts that want to keep track of their favorite teams, players, and their stats
+A PERN-stack web application for soccer aficionados that want to keep track of their favorite teams, players, and their stats.
 
 ## :thinking: Why I built this
 
