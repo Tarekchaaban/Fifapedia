@@ -52,7 +52,7 @@ export default class Players extends React.Component {
 
   handleScrollDown(event) {
     window.scrollTo({
-      top: 475,
+      top: 400,
       left: 475,
       behavior: 'smooth'
     });
