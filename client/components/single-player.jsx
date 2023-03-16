@@ -73,7 +73,7 @@ export default class SinglePlayer extends React.Component {
                     <div className="col-75 white-outline line-height border-radius">
                       <p className="player-stats">Position: <b>{this.state.clickedPlayer.statistics[0].games.position}</b></p>
                       <p className="player-stats">Age: <b>{this.state.clickedPlayer.player.age}</b></p>
-                      <p className="player-stats">Nationality: <b>{this.state.clickedPlayer.player.nationality}</b></p>
+                      <p className="player-stats">Country: <b>{this.state.clickedPlayer.player.nationality}</b></p>
                       <br />
                       <p className="player-stats">Games Played: <b>{this.state.clickedPlayer.statistics[0].games.appearences}</b></p>
                       <p className="player-stats">Passes: <b>{this.state.clickedPlayer.statistics[0].passes.total}</b></p>
