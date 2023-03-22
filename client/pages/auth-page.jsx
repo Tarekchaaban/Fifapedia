@@ -118,7 +118,7 @@ export default class AuthPage extends React.Component {
     return (
       <form id="auth-form" onSubmit={this.handleSubmit}>
         <label className="auth-label" id="username">Username<br/>
-          <input className="auth-input" type="text" placeholder="Please enter username..." value={this.state.username} onChange={this.handleUsernameChange} required />
+          <input autoFocus className="auth-input" type="text" placeholder="Please enter username..." value={this.state.username} onChange={this.handleUsernameChange} required />
         </label><br/>
         <label className="auth-label" id="password">Password<br/>
           <input className="auth-input" type="password" placeholder="Please enter password..." value={this.state.password} onChange={this.handlePasswordChange} required />
