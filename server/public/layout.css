@@ -10,6 +10,53 @@
   flex-basis: 100%;
 }
 
+.col-50 {
+  flex-basis: 50%;
+}
+
+.col-75 {
+  flex-basis: 75%;
+}
+
+.col-25 {
+  flex-basis: 25%;
+}
+
+.col-100 {
+  flex-basis: 100%;
+}
+
+.col-70 {
+  flex-basis: 70%;
+  height: 100vh;
+}
+
+.col-60 {
+  flex-basis: 70%;
+}
+
+.col-30 {
+  flex-basis: 30%;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.col-40 {
+  flex-basis: 40%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.col-40.open {
+  transform: translateX(0);
+}
+
+.col-10 {
+  flex-basis: 1%;
+}
+
 @media screen and (min-width: 768px) {
   .col-100-40 {
     flex-basis: 45%;
