@@ -57,6 +57,16 @@
   flex-basis: 1%;
 }
 
+.column-one-sixth {
+  flex-basis: 34%;
+  align-self: center;
+}
+
+.column-two-thirds {
+  flex-basis: 66%;
+  align-self: center;
+}
+
 @media screen and (min-width: 768px) {
   .col-100-40 {
     flex-basis: 45%;

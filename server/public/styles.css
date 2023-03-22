@@ -224,16 +224,6 @@ ul {
   justify-content: space-around;
 }
 
-.column-one-sixth {
-  flex-basis: 34%;
-  align-self: center;
-}
-
-.column-two-thirds {
-  flex-basis: 66%;
-  align-self: center;
-}
-
 .list-blue-background {
   background-color: #015291;
   border-radius: 10px;
