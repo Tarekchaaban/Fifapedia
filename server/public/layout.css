@@ -35,6 +35,10 @@
   flex-basis: 70%;
 }
 
+.col-55 {
+  flex-basis: 55%;
+}
+
 .col-30 {
   flex-basis: 30%;
   height: 100vh;
